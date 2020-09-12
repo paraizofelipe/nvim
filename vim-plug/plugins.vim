@@ -19,9 +19,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Markdown
     Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 
-    " IndentLine
-    Plug 'Yggdroot/indentLine'
-
 	" Intellisense
     Plug 'neoclide/coc.nvim', {'branch': 'release'}"
     
