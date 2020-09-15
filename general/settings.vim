@@ -38,4 +38,5 @@ set nofoldenable
 set foldmethod=indent
 set confirm
 set list lcs=tab:\|\ 
+set cc=123
 "set autochdir                          " Your working directory will always be the same as your working directory
