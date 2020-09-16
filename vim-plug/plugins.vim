@@ -11,8 +11,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'dense-analysis/ale'
     
     " Vim-Go
-    " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-    
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
     " Jedi-python
     Plug 'davidhalter/jedi-vim'
 
