@@ -101,6 +101,8 @@ let g:which_key_map.l = {
     \ 'k' : [':GoDebugBreakpoint', 'go add breakpoint'],
     \ 's' : [':GoDebugStart', 'go start debug'],
     \ 'S' : [':GoDebugStop', 'go stop debug'],
+    \ 't' : [':GoTest', 'go test'],
+    \ 'x' : [':GoImplements', 'go implements'],
     \ }
 
 let g:which_key_map.n = {
