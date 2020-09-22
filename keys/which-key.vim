@@ -110,6 +110,7 @@ let g:which_key_map.n = {
     \ 'i' : [':e ~/.config/nvim/init.vim', 'edit init config'],
     \ 'p' : [':e ~/.config/nvim/vim-plug/plugins.vim', 'edit plug config'],
     \ 'g' : [':e ~/.config/nvim/general/settings.vim', 'edit general settings'],
+    \ 'c' : [':CocConfig', 'edit coc.nvim settings'],
     \ }
     
  
