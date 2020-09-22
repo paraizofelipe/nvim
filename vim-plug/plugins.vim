@@ -7,14 +7,15 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
+
     " Ale
     Plug 'dense-analysis/ale'
     
     " Vim-Go
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
-    " Jedi-python
-    " Plug 'davidhalter/jedi-vim'
+    "COC Intellisense
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}"
 
     "Vim-Mergetool
     Plug 'samoshkin/vim-mergetool'
@@ -24,9 +25,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Vim-visual-multi
     Plug 'mg979/vim-visual-multi'
-
-    " Intellisense
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}"
     
     " Theme
     Plug 'joshdick/onedark.vim'
@@ -34,9 +32,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     
     " BufferKill
     Plug 'qpkorr/vim-bufkill'
-
-    " Vim-orgmode
-    Plug 'jceb/vim-orgmode'
 
     " Airline
     Plug 'vim-airline/vim-airline'
