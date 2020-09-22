@@ -10,8 +10,10 @@
         "v": "open:vsplit"
     },
 
-    "python.jediEnabled": false,
+    "python.linting.enabled": false, 
+    "python.jediEnabled": true,
     "python.formatting.provider": "black",
+    "python.jediPath": "~/.config/nvim/general/host/.venv/lib/python3.6/site-packages",
 	"languageserver": {
 		"go": {
 		  "command": "gopls",
