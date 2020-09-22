@@ -14,7 +14,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
     " Jedi-python
-    Plug 'davidhalter/jedi-vim'
+    " Plug 'davidhalter/jedi-vim'
 
     "Vim-Mergetool
     Plug 'samoshkin/vim-mergetool'
