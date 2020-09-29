@@ -12,13 +12,12 @@
 
     "python.linting.enabled": false, 
     "python.jediEnabled": true,
-    "python.formatting.provider": "black",
-    "python.jediPath": "~/.config/nvim/general/host/.venv/lib/python3.6/site-packages",
+    "python.jediPath": "~/.local/lib/python3.8/site-packages/",
 	"languageserver": {
 		"go": {
 		  "command": "gopls",
 		  "rootPatterns": ["go.mod"],
 		  "filetypes": ["go"]
-		}
-	  }
+        }
+    }
 }
