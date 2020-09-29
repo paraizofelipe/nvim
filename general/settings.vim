@@ -37,9 +37,22 @@ set clipboard=unnamedplus               " Copy paste between vim and everything 
 set nofoldenable
 set foldmethod=indent
 set confirm
+set showcmd
 set list lcs=tab:\|\ 
 set cc=123
+set completeopt-=preview
 "set autochdir                          " Your working directory will always be the same as your working directory
 
 autocmd FileType qf wincmd J
+autocmd FileType help wincmd K
 
+" Settings to netrw
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+let g:netrw_browse_split = 4
+let g:netrw_winsize = 25
+let g:netrw_altv = 1
+" augroup ProjectDrawer
+"   autocmd!
+"   autocmd VimEnter * :Vexplore
+" augroup END
