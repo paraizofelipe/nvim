@@ -1,5 +1,5 @@
 let g:go_fmt_fail_silently = 1
-" call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
+call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
 let g:go_fold_enable = ['import']
 let g:go_highlight_types = 1
 let g:go_imports_autosave = 1
