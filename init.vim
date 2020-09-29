@@ -25,5 +25,7 @@ source $HOME/.config/nvim/plug-config/fzf.vim
 source $HOME/.config/nvim/keys/which-key.vim
 
 " Lang
+source $HOME/.config/nvim/plug-config/deoplete.vim
+source $HOME/.config/nvim/plug-config/echodoc.vim
 source $HOME/.config/nvim/plug-config/ale.vim
 source $HOME/.config/nvim/plug-config/vim-go.vim
