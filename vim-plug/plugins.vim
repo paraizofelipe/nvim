@@ -9,13 +9,21 @@ endif
 call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Ale
-    Plug 'dense-analysis/ale'
+    Plug 'dense-analysis/ale', { 'do': 'pip install pylint isort black' }
     
     " Vim-Go
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
-    "COC Intellisense
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}"
+    " COC Intellisense
+    " Plug 'neoclide/coc.nvim', {'branch': 'release'}"
+    
+    " Deoplete
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'Shougo/echodoc.vim' 
+    Plug 'deoplete-plugins/deoplete-jedi'
+
+    " VIM vinegar
+    " Plug 'tpope/vim-vinegar'
 
     "Vim-Mergetool
     Plug 'samoshkin/vim-mergetool'
@@ -77,6 +85,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
 call plug#end()
 
+" List of all loaded scripts in a VIM buffer
 function! s:Scratch (command, ...)
    redir => lines
    let saveMore = &more
