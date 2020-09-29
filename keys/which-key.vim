@@ -16,43 +16,42 @@ let g:which_key_use_floating_win = 0
 highlight default link WhichKey          Operator
 highlight default link WhichKeySeperator DiffAdded
 highlight default link WhichKeyGroup     Identifier
-highlight default link WhichKeyDesc      Function
+" highlight default link WhichKeyDesc      Function
 
 " Hide status line
 autocmd! FileType which_key
 autocmd  FileType which_key set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
+\| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
 " s is for search
 let g:which_key_map.s = {
-      \ 'name' : '+search' ,
-      \ '/' : [':History/'     , 'history'],
-      \ ';' : [':Commands'     , 'commands'],
-      \ 'a' : [':Ag'           , 'text Ag'],
-      \ 'c' : [':Commits'      , 'commits'],
-      \ 'C' : [':BCommits'     , 'buffer commits'],
-      \ 'f' : [':Files'        , 'files'],
-      \ 'g' : [':GFiles'       , 'git files'],
-      \ 'G' : [':GFiles?'      , 'modified git files'],
-      \ 'h' : [':History'      , 'file history'],
-      \ 'H' : [':History:'     , 'command history'],
-      \ 'l' : [':Lines'        , 'lines'] ,
-      \ 'm' : [':Marks'        , 'marks'] ,
-      \ 'M' : [':Maps'         , 'normal maps'] ,
-      \ 'p' : [':Helptags'     , 'help tags'] ,
-      \ 'P' : [':Tags'         , 'project tags'],
-      \ 's' : [':Snippets'     , 'snippets'],
-      \ 'S' : [':Colors'       , 'color schemes'],
-      \ 't' : [':Rg'           , 'text Rg'],
-      \ 'T' : [':BTags'        , 'buffer tags'],
-      \ 'w' : [':Windows'      , 'search windows'],
-      \ 'y' : [':Filetypes'    , 'file types'],
-      \ 'z' : [':FZF'          , 'FZF'],
-      \ }
+  \ 'name' : '+search' ,
+  \ '/' : [':History/'     , 'history'],
+  \ ';' : [':Commands'     , 'commands'],
+  \ 'a' : [':Ag'           , 'text Ag'],
+  \ 'c' : [':Commits'      , 'commits'],
+  \ 'C' : [':BCommits'     , 'buffer commits'],
+  \ 'f' : [':Files'        , 'files'],
+  \ 'g' : [':GFiles'       , 'git files'],
+  \ 'G' : [':GFiles?'      , 'modified git files'],
+  \ 'h' : [':History'      , 'file history'],
+  \ 'H' : [':History:'     , 'command history'],
+  \ 'l' : [':Lines'        , 'lines'] ,
+  \ 'm' : [':Marks'        , 'marks'] ,
+  \ 'M' : [':Maps'         , 'normal maps'] ,
+  \ 'p' : [':Helptags'     , 'help tags'] ,
+  \ 'P' : [':Tags'         , 'project tags'],
+  \ 's' : [':Snippets'     , 'snippets'],
+  \ 'S' : [':Colors'       , 'color schemes'],
+  \ 't' : [':Rg'           , 'text Rg'],
+  \ 'T' : [':BTags'        , 'buffer tags'],
+  \ 'w' : [':Windows'      , 'search windows'],
+  \ 'y' : [':Filetypes'    , 'file types'],
+  \ 'z' : [':FZF'          , 'FZF'],
+  \ }
 
 silent! unmap <leader>b
 silent! unmap <leader>t
-silent! unmap <leader>cl
 
 " Hide keys
 let g:which_key_map.1 = 'which_key_ignore'
@@ -67,41 +66,48 @@ let g:which_key_map.9 = 'which_key_ignore'
 let g:which_key_map.ba = 'which_key_ignore'
 let g:which_key_map.bd = 'which_key_ignore'
 
+
 let g:which_key_map.b = {
-    \ 'name' : '+buffers' ,
-    \ 'd' : [':BD'  , 'Delete buffers'],
-    \ 'w' : [':BW'  , 'Wipe buffers'],
-    \ }
+\ 'name' : '+buffers' ,
+\ 'd' : [':BD'  , 'Delete buffers'],
+\ 'w' : [':BW'  , 'Wipe buffers'],
+\ }
 
 let g:which_key_map.c = {
-    \ 'name' : '+comment' ,
-    \ 'l' : ['<plug>NERDCommenterToggle'  , 'comment line'],
-    \ }
+\ 'name' : '+comment' ,
+\ 'l' : ['<plug>NERDCommenterToggle'  , 'comment line'],
+\ }
 
 " c is for floaterm
 let g:which_key_map.t = {
-    \ 'name' : '+terminal' ,
-    \ 'f' : [':FloatermNew fzf'                               , 'fzf'],
-    \ 'g' : [':FloatermNew lazygit'                           , 'git'],
-    \ 'd' : [':FloatermNew lazydocker'                        , 'docker'],
-    \ 'n' : [':FloatermNew node'                              , 'node'],
-    \ 'p' : [':FloatermNew python'                            , 'python'],
-    \ 'r' : [':FloatermNew ranger'                            , 'ranger'],
-    \ 't' : [':FloatermToggle'                                , 'toggle'],
-    \ 's' : [':FloatermNew ncdu'                              , 'ncdu'],
-    \ }
+\ 'name' : '+terminal' ,
+\ 'f' : [':FloatermNew fzf'                               , 'fzf'],
+\ 'g' : [':FloatermNew lazygit'                           , 'git'],
+\ 'd' : [':FloatermNew lazydocker'                        , 'docker'],
+\ 'n' : [':FloatermNew node'                              , 'node'],
+\ 'p' : [':FloatermNew python'                            , 'python'],
+\ 'r' : [':FloatermNew ranger'                            , 'ranger'],
+\ 't' : [':FloatermToggle'                                , 'toggle'],
+\ 's' : [':FloatermNew ncdu'                              , 'ncdu'],
+\ }
 
-let g:which_key_map.l = {
-    \ 'name' : '+golang',
-    \ 'b' : [':GoBuild', 'go build'],
-    \ 'c' : [':GoCoverageToggle', 'go coverage toggle'],
-    \ 'd' : [':GoDoc', 'go doc'],
-    \ 'g' : [':GoDef', 'go def'],
-    \ 'i' : [':GoImplements', 'go implements'],
-    \ 'k' : [':GoDebugBreakpoint', 'go add breakpoint'],
-    \ 's' : [':GoDebugStart', 'go start debug'],
-    \ 'S' : [':GoDebugStop', 'go stop debug'],
+autocmd BufNewFile,BufRead *.go let g:which_key_map.l = {
+\ 'name' : '+golang',
+\ 'a' : [':GoAlternative', 'go alternative'],
+\ 'b' : [':GoBuild', 'go build'],
+\ 'c' : [':GoCoverageToggle', 'go coverage toggle'],
+\ 'd' : [':GoDoc', 'go doc'],
+\ 'g' : [':GoDef', 'go def'],
+\ 'i' : [':GoImplements', 'go implements'],
+\ 'I' : [':GoImports', 'format impoprts'],
+\ 'l' : [':GoDecls', 'decl file'],
+\ 'L' : [':GoDeclsDir', 'decl dir'],
+\ 'k' : [':GoDebugBreakpoint', 'go add breakpoint'],
+\ 'r' : [':GoRename', 'go rename'],
+\ 's' : [':GoDebugStart', 'go start debug'],
+\ 'S' : [':GoDebugStop', 'go stop debug'],
     \ 't' : [':GoTest', 'go test'],
+    \ 'T' : [':GoTestFunc', 'go test function'],
     \ 'x' : [':GoImplements', 'go implements'],
     \ }
 
@@ -112,9 +118,6 @@ let g:which_key_map.n = {
     \ 'g' : [':e ~/.config/nvim/general/settings.vim', 'edit general settings'],
     \ 'c' : [':CocConfig', 'edit coc.nvim settings'],
     \ }
-    
- 
-
 
 " Register which key map
 call which_key#register('<Space>', "g:which_key_map")
