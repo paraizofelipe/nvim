@@ -9,10 +9,9 @@
         "<cr>": ["expandable?", "expand", "open"],
         "v": "open:vsplit"
     },
-
+    "python.jediEnabled": false,
     "python.linting.enabled": false, 
-    "python.jediEnabled": true,
-    "python.jediPath": "~/.local/lib/python3.8/site-packages/",
+    "python.linting.pylintEnabled": false,
 	"languageserver": {
 		"go": {
 		  "command": "gopls",
