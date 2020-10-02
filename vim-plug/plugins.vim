@@ -15,12 +15,19 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
     " COC Intellisense
-    " Plug 'neoclide/coc.nvim', {'branch': 'release'}"
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}"
     
     " Deoplete
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'Shougo/echodoc.vim' 
-    Plug 'deoplete-plugins/deoplete-jedi'
+    " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    " Plug 'Shougo/echodoc.vim'
+    " Plug 'deoplete-plugins/deoplete-jedi'
+
+    " Python Jedi
+    " Plug 'davidhalter/jedi-vim'
+    
+    " Completion-nvim
+    " Plug 'lifepillar/vim-mucomplete'
+    " Plug 'nvim-lua/completion-nvim'
 
     " VIM vinegar
     " Plug 'tpope/vim-vinegar'
