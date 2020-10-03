@@ -30,7 +30,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Plug 'nvim-lua/completion-nvim'
 
     " VIM vinegar
-    " Plug 'tpope/vim-vinegar'
+    Plug 'tpope/vim-vinegar'
 
     "Vim-Mergetool
     Plug 'samoshkin/vim-mergetool'
@@ -70,6 +70,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Sneak
     Plug 'justinmk/vim-sneak'
     
+    " Clever-f
+    Plug 'rhysd/clever-f.vim'   
+
     " Which Keys
     Plug 'liuchengxu/vim-which-key'
 

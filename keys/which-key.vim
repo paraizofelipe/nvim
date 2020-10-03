@@ -53,7 +53,7 @@ let g:which_key_map.s = {
 silent! unmap <leader>b
 silent! unmap <leader>t
 
-" Hide keys
+" Hidden keys but actives
 let g:which_key_map.1 = 'which_key_ignore'
 let g:which_key_map.2 = 'which_key_ignore'
 let g:which_key_map.3 = 'which_key_ignore'
@@ -91,6 +91,21 @@ let g:which_key_map.t = {
 \ 's' : [':FloatermNew ncdu'                              , 'ncdu'],
 \ }
 
+let g:which_key_map.n = {
+\ 'name' : '+nvim',
+\ 'i' : [':e ~/.config/nvim/init.vim', 'edit init config'],
+\ 'p' : [':e ~/.config/nvim/vim-plug/plugins.vim', 'edit plug config'],
+\ 'g' : [':e ~/.config/nvim/general/settings.vim', 'edit general settings'],
+\ 'c' : [':CocConfig', 'edit coc.nvim settings'],
+\ }
+
+
+let g:which_key_map.f = {
+\ 'name' : '+files',
+\ 't' : [':Explore', 'Open netrw'],
+\ 'r' : [':FloatermNew ranger', 'ranger'],
+\}
+
 autocmd BufNewFile,BufRead *.go let g:which_key_map.l = {
 \ 'name' : '+golang',
 \ 'a' : [':GoAlternative', 'go alternative'],
@@ -106,18 +121,12 @@ autocmd BufNewFile,BufRead *.go let g:which_key_map.l = {
 \ 'r' : [':GoRename', 'go rename'],
 \ 's' : [':GoDebugStart', 'go start debug'],
 \ 'S' : [':GoDebugStop', 'go stop debug'],
-    \ 't' : [':GoTest', 'go test'],
-    \ 'T' : [':GoTestFunc', 'go test function'],
-    \ 'x' : [':GoImplements', 'go implements'],
-    \ }
+\ 't' : [':GoTest', 'go test'],
+\ 'T' : [':GoTestFunc', 'go test function'],
+\ 'x' : [':GoImplements', 'go implements'],
+\ }
 
-let g:which_key_map.n = {
-    \ 'name' : '+nvim',
-    \ 'i' : [':e ~/.config/nvim/init.vim', 'edit init config'],
-    \ 'p' : [':e ~/.config/nvim/vim-plug/plugins.vim', 'edit plug config'],
-    \ 'g' : [':e ~/.config/nvim/general/settings.vim', 'edit general settings'],
-    \ 'c' : [':CocConfig', 'edit coc.nvim settings'],
-    \ }
+
 
 " Register which key map
 call which_key#register('<Space>', "g:which_key_map")

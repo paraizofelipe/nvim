@@ -12,3 +12,5 @@ silent! unmap <leader>c$
 silent! unmap <leader>cn
 silent! unmap <leader>cm
 silent! unmap <leader>cc
+
+silent! unmap <leader>f
