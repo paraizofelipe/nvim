@@ -1,33 +1,29 @@
-" auto-install vim-plug
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  "autocmd VimEnter * PlugInstall
-  "autocmd VimEnter * PlugInstall | source $MYVIMRC
-endif
 
+let langs = ['vim', 'go', 'python']
+
+" auto-install vim-plug
 call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Ale
-    Plug 'dense-analysis/ale', { 'do': 'pip install pylint isort black' }
+    Plug 'dense-analysis/ale', { 'do': 'pip install pylint flake8 isort black', 'for': langs }
     
     " Vim-Go
-    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 
     " COC Intellisense
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}"
+    Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': langs }
     
     " Deoplete
     " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    " Plug 'Shougo/echodoc.vim'
-    " Plug 'deoplete-plugins/deoplete-jedi'
+    " Plug 'Shougo/echodoc.vim', { 'for': langs }
+    " Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
 
     " Python Jedi
-    " Plug 'davidhalter/jedi-vim'
+    " Plug 'davidhalter/jedi-vim', { 'for': 'python' }
     
     " Completion-nvim
-    " Plug 'lifepillar/vim-mucomplete'
-    " Plug 'nvim-lua/completion-nvim'
+    " Plug 'lifepillar/vim-mucomplete', { 'for': langs }
+    " Plug 'nvim-lua/completion-nvim', { 'for': langs }
 
     " VIM vinegar
     Plug 'tpope/vim-vinegar'
