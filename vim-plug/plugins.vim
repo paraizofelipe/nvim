@@ -5,10 +5,13 @@ let langs = ['vim', 'go', 'python']
 call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Ale
-    Plug 'dense-analysis/ale', { 'do': 'pip install pylint flake8 isort black', 'for': langs }
+    " Plug 'dense-analysis/ale', { 'do': 'pip install pylint flake8 isort black', 'for': langs }
     
     " Vim-Go
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
+
+    " Org mode
+    Plug 'jceb/vim-orgmode', { 'for': 'org' }
 
     " COC Intellisense
     Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': langs }
@@ -22,6 +25,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Plug 'davidhalter/jedi-vim', { 'for': 'python' }
     
     " Completion-nvim
+    " Plug 'neovim/nvim-lspconfig'
     " Plug 'lifepillar/vim-mucomplete', { 'for': langs }
     " Plug 'nvim-lua/completion-nvim', { 'for': langs }
 
