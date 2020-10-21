@@ -5,7 +5,7 @@ let langs = ['vim', 'go', 'python']
 call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Ale
-    " Plug 'dense-analysis/ale', { 'do': 'pip install pylint flake8 isort black', 'for': langs }
+    Plug 'dense-analysis/ale', { 'do': 'pip install pylint flake8 isort black', 'for': langs }
     
     " Vim-Go
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
@@ -42,7 +42,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'mg979/vim-visual-multi'
     
     " Theme
-    Plug 'joshdick/onedark.vim'
     Plug 'morhetz/gruvbox'
     
     " BufferKill
