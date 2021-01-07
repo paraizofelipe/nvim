@@ -4,6 +4,10 @@ let g:startify_custom_header = [
                 \ '         |  \| |/ _ \/ _ \ \ / / | || |\/| |',
                 \ '         | |\  |  __/ (_) \ V /  | || |  | |',
                 \ '         |_| \_|\___|\___/ \_/  |___|_|  |_|',
+                \ '                                            ',
+                \ '                                            ',
+                \ '         Author: Felipe Paraizo',
+                \ '         URL: http://paraizo.dev',
         \]
 
 let g:startify_session_dir = '~/.config/nvim/session'
@@ -15,7 +19,6 @@ let g:startify_lists = [
           \ { 'type': 'sessions',  'header': ['   Sessions']                     },
           \ { 'type': 'bookmarks', 'header': ['   Bookmarks']                    },
           \ ]
-
 
 let g:startify_session_autoload = 1
 let g:startify_session_delete_buffers = 1
@@ -30,7 +33,7 @@ function! StartifyEntryFormat()
 endfunction
 
 let g:startify_bookmarks = [
-    \ { 'c': '~/.config/i3/config' },
+    \ { 'c': '~/.i3/config' },
     \ { 'i': '~/.config/nvim/init.vim' },
     \ { 'z': '~/.zshrc' },
     \ { 'p': '~/projects' },
