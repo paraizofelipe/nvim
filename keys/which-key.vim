@@ -93,6 +93,7 @@ let g:which_key_map.t = {
 
 let g:which_key_map.n = {
 \ 'name' : '+nvim',
+\ 'k' : [':e ~/.config/nvim/keys/which-key.vim', 'edit keys config'],
 \ 'i' : [':e ~/.config/nvim/init.vim', 'edit init config'],
 \ 'p' : [':e ~/.config/nvim/vim-plug/plugins.vim', 'edit plug config'],
 \ 'g' : [':e ~/.config/nvim/general/settings.vim', 'edit general settings'],
@@ -106,6 +107,11 @@ let g:which_key_map.f = {
 \ 'r' : [':FloatermNew ranger', 'ranger'],
 \}
 
+autocmd BufNewFile,BufRead *.go let g:which_key_map.o = {
+\ 'name' : '+COC',
+\ 'd' : [':CocDiagnostics', 'COC diagnostics'],
+\ }
+
 autocmd BufNewFile,BufRead *.go let g:which_key_map.l = {
 \ 'name' : '+golang',
 \ 'a' : [':GoAlternative', 'go alternative'],
@@ -113,6 +119,7 @@ autocmd BufNewFile,BufRead *.go let g:which_key_map.l = {
 \ 'c' : [':GoCoverageToggle', 'go coverage toggle'],
 \ 'd' : [':GoDoc', 'go doc'],
 \ 'g' : [':GoDef', 'go def'],
+\ 'h' : [':GoInfo', 'go info'],
 \ 'i' : [':GoImplements', 'go implements'],
 \ 'I' : [':GoImports', 'format impoprts'],
 \ 'l' : [':GoDecls', 'decl file'],
