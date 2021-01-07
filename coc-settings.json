@@ -1,6 +1,7 @@
 {
+    "diagnostic.errorSign": "✘",
+    "diagnostic.warningSign": "⚠",
     "coc.preferences.formatOnSaveFiletypes": ["python"],
-
     "explorer.width": 30,
     "explorer.icon.enableNerdfont": true,
     "explorer.previewAction.onHover": false,
@@ -12,7 +13,7 @@
     "python.jediEnabled": false,
     "python.linting.enabled": false, 
     "python.linting.pylintEnabled": false,
-	"languageserver": {
+    "languageserver": {
 		"go": {
 		  "command": "gopls",
 		  "rootPatterns": ["go.mod"],
