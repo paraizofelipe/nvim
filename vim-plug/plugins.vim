@@ -5,7 +5,7 @@ let langs = ['vim', 'go', 'python']
 call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Ale
-    Plug 'dense-analysis/ale', { 'do': 'pip install pylint flake8 isort black', 'for': langs }
+    " Plug 'dense-analysis/ale', { 'do': 'pip install pylint flake8 isort black', 'for': langs }
     
     " Vim-Go
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
@@ -14,8 +14,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'jceb/vim-orgmode', { 'for': 'org' }
 
     " COC Intellisense
-    Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': langs }
-    
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'neoclide/coc-denite'
+
     " Deoplete
     " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     " Plug 'Shougo/echodoc.vim', { 'for': langs }
@@ -68,7 +69,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     
     " Sneak
     Plug 'justinmk/vim-sneak'
-    
+ 
+    " CtrlP
+    Plug 'kien/ctrlp.vim'
+
     " Clever-f
     Plug 'rhysd/clever-f.vim'   
 
@@ -90,7 +94,13 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'airblade/vim-rooter'
 
     " Ack
-    Plug 'mileszs/ack.vim'
+    " Plug 'mileszs/ack.vim'
+
+    " Rg
+    " Plug 'jremmen/vim-ripgrep'
+
+    " Ag
+    " Plug 'rking/ag.vim'
 
 call plug#end()
 
