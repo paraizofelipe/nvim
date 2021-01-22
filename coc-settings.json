@@ -1,23 +1,25 @@
 {
-    "diagnostic.errorSign": "✘",
+    "diagnostic.errorSign": "⛔",
     "diagnostic.warningSign": "⚠",
-    "coc.preferences.formatOnSaveFiletypes": ["python"],
+    "diagnostic.infoSign": "ℹ",
+    "diagnostic.hintSign": "ℹ",
+    "coc.preferences.formatOnSaveFiletypes": [
+        "python"
+    ],
     "explorer.width": 30,
     "explorer.icon.enableNerdfont": true,
     "explorer.previewAction.onHover": false,
     "explorer.icon.enableVimDevicons": false,
-    "explorer.keyMappings": {
-        "<cr>": ["expandable?", "expand", "open"],
-        "v": "open:vsplit"
-    },
-    "python.jediEnabled": false,
-    "python.linting.enabled": false, 
+    "python.linting.enabled": false,
     "python.linting.pylintEnabled": false,
-    "languageserver": {
-		"go": {
-		  "command": "gopls",
-		  "rootPatterns": ["go.mod"],
-		  "filetypes": ["go"]
+        "languageserver": {
+        "golang": {
+            "command": "gopls",
+            "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+            "filetypes": ["go"],
+            "initializationOptions": {
+                "usePlaceholders": true
+            }
         }
     }
 }

@@ -101,15 +101,28 @@ let g:which_key_map.n = {
 \ }
 
 
+let g:which_key_map.d = {
+\ 'name' : '+diff',
+\ 't' : [':diffthis', 'active diff this file'],
+\ 'o' : [':diffoff', 'disable diff in file'],
+\ 's' : [':diffsplit', 'open diff in split mode'],
+\}
+
 let g:which_key_map.f = {
 \ 'name' : '+files',
 \ 't' : [':Explore', 'Open netrw'],
 \ 'r' : [':FloatermNew ranger', 'ranger'],
 \}
 
-autocmd BufNewFile,BufRead *.go let g:which_key_map.o = {
-\ 'name' : '+COC',
-\ 'd' : [':CocDiagnostics', 'COC diagnostics'],
+" autocmd BufNewFile,BufRead *.go let g:which_key_map.o = {
+" \ 'name' : '+COC',
+" \ 'd' : [':CocDiagnostics', 'COC diagnostics'],
+" \ }
+
+let g:which_key_map.o = {
+\ 'name' : '+Open',
+\ 'q' : [':copen', 'Open quickfix'],
+\ 'l' : [':lopen', 'Open local list'],
 \ }
 
 autocmd BufNewFile,BufRead *.go let g:which_key_map.l = {
@@ -133,7 +146,18 @@ autocmd BufNewFile,BufRead *.go let g:which_key_map.l = {
 \ 'x' : [':GoImplements', 'go implements'],
 \ }
 
+autocmd BufNewFile,BufRead *.py let g:which_key_map.l = {
+\ 'name' : '+python',
+\ 'a' : [':call jedi#show_assignments()', 'goto assignments'],
+\ 'd' : [':call jedi#show_documentation()', 'show doccumentation'],
+\ 'r' : [':call jedi#rename()', 'rename'],
+\ }
 
 
+let g:which_key_map.ss = {
+\ 'name' : '+session',
+\ 's' : [':SSave', 'save session'],
+\ 'c' : [':SClose', 'close session'],
+\ }
 " Register which key map
 call which_key#register('<Space>', "g:which_key_map")

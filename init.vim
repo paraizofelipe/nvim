@@ -12,7 +12,6 @@ source $HOME/.config/nvim/themes/airline.vim
 " Key
 source $HOME/.config/nvim/keys/keys.vim
 
-
 " Plugin Configuration
 source $HOME/.config/nvim/plug-config/airline.vim
 source $HOME/.config/nvim/plug-config/vista.vim
@@ -27,6 +26,8 @@ source $HOME/.config/nvim/keys/which-key.vim
 " source $HOME/.config/nvim/plug-config/vim-mucomplete.vim
 " source $HOME/.config/nvim/plug-config/deoplete.vim
 " source $HOME/.config/nvim/plug-config/echodoc.vim
-source $HOME/.config/nvim/plug-config/coc.vim
-" source $HOME/.config/nvim/plug-config/ale.vim
+" source $HOME/.config/nvim/plug-config/coc.vim
+source $HOME/.config/nvim/plug-config/ale.vim
+source $HOME/.config/nvim/plug-config/jedi-vim.vim
 source $HOME/.config/nvim/plug-config/vim-go.vim
+source $HOME/.config/nvim/plug-config/vim-mergetool.vim

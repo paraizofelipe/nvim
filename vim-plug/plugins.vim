@@ -4,18 +4,30 @@ let langs = ['vim', 'go', 'python']
 " auto-install vim-plug
 call plug#begin('~/.config/nvim/autoload/plugged')
 
+    " Polyglot syntax better
+    Plug 'sheerun/vim-polyglot'
+
+    " Syntax python with Semshi
+    " Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python'}
+
     " Ale
-    " Plug 'dense-analysis/ale', { 'do': 'pip install pylint flake8 isort black', 'for': langs }
+    Plug 'dense-analysis/ale', { 'do': 'pip install pylint isort black yamllint && npm install jsonlint prettier' }
     
     " Vim-Go
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 
-    " Org mode
-    Plug 'jceb/vim-orgmode', { 'for': 'org' }
+    " Dotoo 
+    Plug 'dhruvasagar/vim-dotoo'
+
+    " VimWiki
+    Plug 'vimwiki/vimwiki'
+
+    " Vim-orgmode
+    Plug 'jceb/vim-orgmode'
 
     " COC Intellisense
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'neoclide/coc-denite'
+    " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    " Plug 'neoclide/coc-denite'
 
     " Deoplete
     " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -23,7 +35,11 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
 
     " Python Jedi
-    " Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+    Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+
+
+    " Virtual envs and packages python with Poetry
+    Plug 'petobens/poet-v'
     
     " Completion-nvim
     " Plug 'neovim/nvim-lspconfig'
