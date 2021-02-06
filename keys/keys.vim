@@ -1,3 +1,4 @@
+nnoremap Q q
 map q :quit<CR>
 
 nmap <A-1> <Plug>AirlineSelectTab1

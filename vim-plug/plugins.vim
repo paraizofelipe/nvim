@@ -1,5 +1,5 @@
 
-let langs = ['vim', 'go', 'python']
+let langs = ['vim', 'go', 'python', 'lua']
 
 " auto-install vim-plug
 call plug#begin('~/.config/nvim/autoload/plugged')
@@ -13,38 +13,34 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Ale
     Plug 'dense-analysis/ale', { 'do': 'pip install pylint isort black yamllint && npm install jsonlint prettier' }
     
+    " Deoplete
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'Shougo/echodoc.vim', { 'for': langs }
+    " Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
+
+    " Completion-nvim
+    " Plug 'neovim/nvim-lspconfig'
+    " Plug 'nvim-lua/completion-nvim', { 'for': langs }
+    " Plug 'lifepillar/vim-mucomplete', { 'for': langs }
+
     " Vim-Go
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 
-    " Dotoo 
-    Plug 'dhruvasagar/vim-dotoo'
+    " SQHEll - A lightweight SQL wrapper
+    Plug 'joereynolds/SQHell.vim'
 
     " VimWiki
     Plug 'vimwiki/vimwiki'
-
-    " Vim-orgmode
-    Plug 'jceb/vim-orgmode'
 
     " COC Intellisense
     " Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " Plug 'neoclide/coc-denite'
 
-    " Deoplete
-    " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    " Plug 'Shougo/echodoc.vim', { 'for': langs }
-    " Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
-
     " Python Jedi
     Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
-
     " Virtual envs and packages python with Poetry
     Plug 'petobens/poet-v'
-    
-    " Completion-nvim
-    " Plug 'neovim/nvim-lspconfig'
-    " Plug 'lifepillar/vim-mucomplete', { 'for': langs }
-    " Plug 'nvim-lua/completion-nvim', { 'for': langs }
 
     " VIM vinegar
     Plug 'tpope/vim-vinegar'

@@ -13,7 +13,7 @@ highlight ALEWarning guibg=221
 highlight ALEError guibg=203
 
 " UI 
-let g:ale_completion_enabled = 1
+" let g:ale_completion_enabled = 1
 " let g:ale_floating_preview = 1
 " let g:ale_detail_to_floating_preview = 1
 " let g:ale_hover_to_floating_preview = 1
@@ -29,7 +29,7 @@ let g:ale_fix_on_save = 1
 
 " Linters and Fixers
 let g:ale_linters = {
-\   'go': ['golint', 'go vet', 'gofmt', 'gopls'],
+\   'go': ['gopls', 'go vet', 'gofmt'],
 \   'python': ['pyright', 'pylint'],
 \   'json': ['jsonlint'],
 \   'yaml': ['yamllint'],

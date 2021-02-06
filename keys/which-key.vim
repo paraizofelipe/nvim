@@ -71,6 +71,7 @@ let g:which_key_map.b = {
 \ 'name' : '+buffers' ,
 \ 'd' : [':BD'  , 'Delete buffers'],
 \ 'w' : [':BW'  , 'Wipe buffers'],
+\ 'l' : [':CtrlPBuffer'  , 'List buffers'],
 \ }
 
 let g:which_key_map.c = {
