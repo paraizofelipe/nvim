@@ -154,6 +154,10 @@ autocmd BufNewFile,BufRead *.py let g:which_key_map.l = {
 \ 'r' : [':call jedi#rename()', 'rename'],
 \ }
 
+autocmd BufNewFile,BufRead *.sql let g:which_key_map.l = {
+\ 'name' : '+python',
+\ 'x' : ['SQLExec', 'Exec SQL line'],
+\ }
 
 let g:which_key_map.ss = {
 \ 'name' : '+session',

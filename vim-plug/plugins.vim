@@ -7,6 +7,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Polyglot syntax better
     Plug 'sheerun/vim-polyglot'
 
+    " SQHeaven - A lightweight SQL wrapper
+    Plug 'paraizofelipe/sqheaven.nvim'
+
     " Syntax python with Semshi
     " Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python'}
 
@@ -25,9 +28,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Vim-Go
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
-
-    " SQHEll - A lightweight SQL wrapper
-    Plug 'joereynolds/SQHell.vim'
 
     " VimWiki
     Plug 'vimwiki/vimwiki'

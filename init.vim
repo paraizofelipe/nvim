@@ -30,7 +30,7 @@ source $HOME/.config/nvim/plug-config/echodoc.vim
 source $HOME/.config/nvim/plug-config/jedi-vim.vim
 source $HOME/.config/nvim/plug-config/vim-go.vim
 source $HOME/.config/nvim/plug-config/vim-mergetool.vim
-source $HOME/.config/nvim/plug-config/sqhell.vim
+source $HOME/.config/nvim/plug-config/sqheaven.vim
 " source $HOME/.config/nvim/plug-config/coc.vim
 " source $HOME/.config/nvim/plug-config/vim-mucomplete.vim
 " source $HOME/.config/nvim/plug-config/completion-nvim.vim

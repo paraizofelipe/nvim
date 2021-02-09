@@ -2,3 +2,4 @@ tags*
 .netrwhist
 autoload/plugged/*
 session
+sqheaven.vim
