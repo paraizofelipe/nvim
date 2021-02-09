@@ -28,7 +28,11 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Vim-Go
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
-
+    
+    " Lua lang
+    Plug 'xolox/vim-lua-ftplugin'
+    Plug 'xolox/vim-misc'
+    
     " VimWiki
     Plug 'vimwiki/vimwiki'
 
