@@ -29,7 +29,7 @@ let g:ale_fix_on_save = 1
 
 " Linters and Fixers
 let g:ale_linters = {
-\   'go': ['gopls', 'go vet', 'gofmt'],
+\   'go': ['golint', 'go vet', 'gofmt'],
 \   'python': ['pyright', 'pylint'],
 \   'json': ['jsonlint'],
 \   'yaml': ['yamllint'],
