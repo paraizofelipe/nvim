@@ -164,5 +164,12 @@ let g:which_key_map.ss = {
 \ 's' : [':SSave', 'save session'],
 \ 'c' : [':SClose', 'close session'],
 \ }
+
+let g:which_key_map.tt = {
+\ 'name' : '+translate',
+\ 'p' : [':TransToPT', 'translate to pt-br'],
+\ 'e' : [':TransToEN', 'translate to en'],
+\ }
+
 " Register which key map
 call which_key#register('<Space>', "g:which_key_map")
