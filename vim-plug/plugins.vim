@@ -9,9 +9,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " SQHeaven - A lightweight SQL wrapper
     Plug 'paraizofelipe/sqheaven.nvim'
-
-    " Syntax python with Semshi
-    " Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python'}
+    " GoodNight - A lightweight request client
+    Plug 'paraizofelipe/good-night.nvim'
+    Plug 'file://'.expand('~/projects/translate.nvim')
 
     " Ale
     Plug 'dense-analysis/ale', { 'do': 'pip install pylint isort black yamllint && npm install jsonlint prettier' }
@@ -43,8 +43,11 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Python Jedi
     Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
+    " Syntax python with Semshi
+    Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python'}
+
     " Virtual envs and packages python with Poetry
-    Plug 'petobens/poet-v'
+    " Plug 'petobens/poet-v'
 
     " VIM vinegar
     Plug 'tpope/vim-vinegar'
