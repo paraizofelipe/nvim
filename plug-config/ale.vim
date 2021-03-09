@@ -27,10 +27,14 @@ let g:ale_python_black_use_global = 1
 let g:ale_python_isort_use_global = 1
 let g:ale_fix_on_save = 1
 
+let g:ale_python_pyright_executable = 'pyright-langserver'
+
+command! ALEToggleFixer execute "let g:ale_fix_on_save = get(g:, 'ale_fix_on_save', 0) ? 0 : 1"
+
 " Linters and Fixers
 let g:ale_linters = {
 \   'go': ['golint', 'go vet', 'gofmt'],
-\   'python': ['pyright', 'pylint'],
+\   'python': ['pyright', 'pydocstyle'],
 \   'json': ['jsonlint'],
 \   'yaml': ['yamllint'],
 \}
