@@ -69,9 +69,16 @@ let g:which_key_map.bd = 'which_key_ignore'
 
 let g:which_key_map.b = {
 \ 'name' : '+buffers' ,
-\ 'd' : [':BD'  , 'Delete buffers'],
-\ 'w' : [':BW'  , 'Wipe buffers'],
-\ 'l' : [':CtrlPBuffer'  , 'List buffers'],
+\ 'd' : [':CtrlSpace dq' , 'Delete buffers'],
+\ 'c' : [':CtrlSpace cq'  , 'Close buffers'],
+\ 'l' : [':CtrlSpace'  , 'List buffers'],
+\ }
+
+let g:which_key_map.t = {
+\ 'name' : '+buffers' ,
+\ 'd' : [':CtrlSpace cq' , 'Delete tabs'],
+\ 'c' : [':tabclose'  , 'Close tabs'],
+\ 'l' : [':CtrlSpace l'  , 'List tabs'],
 \ }
 
 let g:which_key_map.c = {
@@ -80,8 +87,8 @@ let g:which_key_map.c = {
 \ }
 
 " c is for floaterm
-let g:which_key_map.t = {
-\ 'name' : '+terminal' ,
+let g:which_key_map.a = {
+\ 'name' : '+applications' ,
 \ 'f' : [':FloatermNew fzf'                               , 'fzf'],
 \ 'g' : [':FloatermNew lazygit'                           , 'git'],
 \ 'd' : [':FloatermNew lazydocker'                        , 'docker'],
@@ -126,38 +133,42 @@ let g:which_key_map.o = {
 \ 'l' : [':lopen', 'Open local list'],
 \ }
 
-autocmd BufNewFile,BufRead *.go let g:which_key_map.l = {
-\ 'name' : '+golang',
-\ 'a' : [':GoAlternative', 'go alternative'],
-\ 'b' : [':GoBuild', 'go build'],
-\ 'c' : [':GoCoverageToggle', 'go coverage toggle'],
-\ 'd' : [':GoDoc', 'go doc'],
-\ 'g' : [':GoDef', 'go def'],
-\ 'h' : [':GoInfo', 'go info'],
-\ 'i' : [':GoImplements', 'go implements'],
-\ 'I' : [':GoImports', 'format impoprts'],
-\ 'l' : [':GoDecls', 'decl file'],
-\ 'L' : [':GoDeclsDir', 'decl dir'],
-\ 'k' : [':GoDebugBreakpoint', 'go add breakpoint'],
-\ 'r' : [':GoRename', 'go rename'],
-\ 's' : [':GoDebugStart', 'go start debug'],
-\ 'S' : [':GoDebugStop', 'go stop debug'],
-\ 't' : [':GoTest', 'go test'],
-\ 'T' : [':GoTestFunc', 'go test function'],
-\ 'x' : [':GoImplements', 'go implements'],
-\ }
+augroup lang_keys
+    autocmd!
+    autocmd BufNewFile,BufRead *.go let g:which_key_map.l = {
+    \ 'name' : '+golang',
+    \ 'a' : [':GoAlternative', 'go alternative'],
+    \ 'b' : [':GoBuild', 'go build'],
+    \ 'c' : [':GoCoverageToggle', 'go coverage toggle'],
+    \ 'd' : [':GoDoc', 'go doc'],
+    \ 'g' : [':GoDef', 'go def'],
+    \ 'h' : [':GoInfo', 'go info'],
+    \ 'i' : [':GoImplements', 'go implements'],
+    \ 'I' : [':GoImports', 'format impoprts'],
+    \ 'l' : [':GoDecls', 'decl file'],
+    \ 'L' : [':GoDeclsDir', 'decl dir'],
+    \ 'k' : [':GoDebugBreakpoint', 'go add breakpoint'],
+    \ 'r' : [':GoRename', 'go rename'],
+    \ 's' : [':GoDebugStart', 'go start debug'],
+    \ 'S' : [':GoDebugStop', 'go stop debug'],
+    \ 't' : [':GoTest', 'go test'],
+    \ 'T' : [':GoTestFunc', 'go test function'],
+    \ 'x' : [':GoImplements', 'go implements'],
+    \ }
 
-autocmd BufNewFile,BufRead *.py let g:which_key_map.l = {
-\ 'name' : '+python',
-\ 'a' : [':call jedi#show_assignments()', 'goto assignments'],
-\ 'd' : [':call jedi#show_documentation()', 'show doccumentation'],
-\ 'r' : [':call jedi#rename()', 'rename'],
-\ }
+    autocmd BufNewFile,BufRead *.py let g:which_key_map.l = {
+    \ 'name' : '+python',
+    \ 'a' : [':call jedi#show_assignments()', 'goto assignments'],
+    \ 'd' : [':call jedi#show_documentation()', 'show doccumentation'],
+    \ 'r' : [':call jedi#rename()', 'rename'],
+    \ }
 
-autocmd BufNewFile,BufRead *.sql let g:which_key_map.l = {
-\ 'name' : '+python',
-\ 'x' : ['SQLExec', 'Exec SQL line'],
-\ }
+    autocmd BufNewFile,BufRead *.sql let g:which_key_map.l = {
+    \ 'name' : '+python',
+    \ 'x' : ['SQLExec', 'Exec SQL line'],
+    \ }
+augroup END
+
 
 let g:which_key_map.ss = {
 \ 'name' : '+session',

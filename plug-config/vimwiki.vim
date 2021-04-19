@@ -1,6 +1,6 @@
 let wiki = {}
 let wiki.path = '~/vimwiki/'
-let wiki.nested_syntaxes = {'python': 'python', 'go': 'go', 'json': 'json', 'yaml': 'yaml'}
+let wiki.nested_syntaxes = {'python': 'python', 'go': 'go', 'json': 'json', 'yaml': 'yaml', 'bash': 'bash'}
 let g:vimwiki_list = [{'auto_tags': 1}]
 let g:vimwiki_folding = 'list'
 

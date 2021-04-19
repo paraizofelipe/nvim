@@ -4,7 +4,7 @@ let g:ale_sign_info = 'ℹ'
 let g:ale_set_quickfix = 1
 let g:ale_set_loclist = 0
 let g:ale_open_list = 0
-
+" let g:ale_virtualtext_cursor = 1
 " highlight ALEErrorSign ctermbg=239 ctermfg=red
 " highlight ALEWarningSign ctermbg=238 ctermfg=yellow
 " highlight ALEInfoSign ctermbg=238 ctermfg=blue

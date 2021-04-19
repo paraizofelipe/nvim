@@ -1,4 +1,3 @@
-
 let langs = ['vim', 'go', 'python', 'lua']
 
 " auto-install vim-plug
@@ -11,7 +10,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'paraizofelipe/sqheaven.nvim'
     " GoodNight - A lightweight request client
     Plug 'paraizofelipe/good-night.nvim'
-    Plug 'file://'.expand('~/projects/translate.nvim')
+    Plug 'file://'.expand('~/projects/translator.nvim')
 
     " Ale
     Plug 'dense-analysis/ale', { 'do': 'pip install pylint isort black yamllint && npm install jsonlint prettier' }
@@ -56,7 +55,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'samoshkin/vim-mergetool'
 
     " Markdown
-    Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+    " Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 
     " Vim-visual-multi
     Plug 'mg979/vim-visual-multi'
@@ -64,9 +63,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Theme
     Plug 'morhetz/gruvbox'
     
-    " BufferKill
-    Plug 'qpkorr/vim-bufkill'
-
     " Airline
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
@@ -89,8 +85,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Sneak
     Plug 'justinmk/vim-sneak'
  
-    " CtrlP
-    Plug 'kien/ctrlp.vim'
+    " CtrlSpace
+    Plug 'vim-ctrlspace/vim-ctrlspace'
 
     " Clever-f
     Plug 'rhysd/clever-f.vim'   

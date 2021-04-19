@@ -27,7 +27,7 @@ set number relativenumber               " Line numbers
 set nu rnu
 set cursorline                          " Enable highlighting of the current line
 set background=dark                     " tell vim what the background color looks like
-set showtabline=2                       " Always show tabs
+set showtabline=0                       " Never show tabs
 set noshowmode                          " We don't need to see things like -- INSERT -- anymore
 set nobackup                            " This is recommended by coc
 set nowritebackup                       " This is recommended by coc
@@ -43,9 +43,11 @@ set list lcs=tab:\|\
 set cc=123
 set completeopt-=preview
 "set autochdir                          " Your working directory will always be the same as your working directory
-
-autocmd FileType qf wincmd J
-autocmd FileType help wincmd K
+augroup long_lines
+    autocmd!
+    autocmd FileType qf wincmd J
+    autocmd FileType help wincmd K
+augroup END
 
 " Settings to netrw
 " autocmd FileType netrw setl bufhidden=wipe
