@@ -24,3 +24,5 @@ vim.cmd('source ~/.config/nvim/vimscript/functions/init.vim')
 -- LSP
 require('lsp')
 require('lsp.go-ls')
+require('lsp.php-ls')
+require('lsp.lua-ls')
