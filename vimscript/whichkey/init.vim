@@ -6,7 +6,7 @@ vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
 let g:which_key_map =  {}
 " Define a separator
 let g:which_key_sep = '→'
-set timeoutlen=100
+" set timeoutlen=300
 
 
 " Not a fan of floating windows for this
@@ -53,7 +53,7 @@ let g:which_key_map.s = {
 
 let g:which_key_map.b = {
 \ 'name' : '+buffers' ,
-\ 'd' : [':bdelete' , 'Delete buffers'],
+\ 'd' : [':BFdelete' , 'Delete buffers'],
 \ 'c' : [':bwipeout'  , 'Close buffers'],
 \ 'l' : [':buffers'  , 'List buffers'],
 \ }
