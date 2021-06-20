@@ -1,0 +1,7 @@
+-- vim.g.vista_fzf_preview = {'right:50%'}
+-- vim.g.vista_renderer_enable_icon = 1
+--
+-- vim.g.vista_renderer_icons = {
+   -- "function" = "\uf794",
+   -- "variable" = "\uf71b",
+   -- }

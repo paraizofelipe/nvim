@@ -11,3 +11,4 @@ vim.g.go_highlight_function_parameters=1
 vim.g.go_highlight_diagnostic_errors=0
 vim.g.go_highlight_diagnostic_warnings=0
 vim.g.go_highlight_extra_types=0
+

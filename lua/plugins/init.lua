@@ -30,14 +30,20 @@ return require('packer').startup(function(use)
     use 'mhinz/vim-startify'
     use 'justinmk/vim-sneak'
     use 'preservim/nerdcommenter'
-    use 'rhysd/clever-f.vim' 
+    use 'rhysd/clever-f.vim'
     use 'tpope/vim-vinegar'
+    use 'tpope/vim-surround'
+    -- QuickScope
+    -- use 'unblevable/quick-scope'
+
+    -- Markdown
+    use 'iamcco/markdown-preview.nvim'
 
     -- Golang
     use 'fatih/vim-go'
 
     -- Tlescope
-    use {'nvim-telescope/telescope.nvim', 
+    use {'nvim-telescope/telescope.nvim',
         requires = {
             'nvim-lua/plenary.nvim',
             'nvim-lua/popup.nvim',
@@ -86,7 +92,7 @@ return require('packer').startup(function(use)
     -- Git
     -- use 'TimUntersberger/neogit'
     use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
-    use 'f-person/git-blame.nvim'
+    -- use 'f-person/git-blame.nvim'
     use 'tpope/vim-fugitive'
     use 'tpope/vim-rhubarb'
     use 'samoshkin/vim-mergetool'
@@ -98,5 +104,5 @@ return require('packer').startup(function(use)
             'kristijanhusak/vim-dadbod-completion',
         }
     }
-    
+
 end)
