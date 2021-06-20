@@ -26,3 +26,5 @@ require('lsp')
 require('lsp.go-ls')
 require('lsp.php-ls')
 require('lsp.lua-ls')
+
+--- Teste 123

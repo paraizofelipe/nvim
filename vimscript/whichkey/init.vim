@@ -52,57 +52,60 @@ let g:which_key_map.s = {
 \ }
 
 let g:which_key_map.b = {
-\ 'name' : '+buffers' ,
-\ 'd' : [':BFdelete' , 'Delete buffers'],
-\ 'c' : [':bwipeout'  , 'Close buffers'],
-\ 'l' : [':buffers'  , 'List buffers'],
+    \ 'name' : '+buffers' ,
+    \ 'd' : [':BFdelete' , 'Delete buffers'],
+    \ 'c' : [':bwipeout'  , 'Close buffers'],
+    \ 'l' : [':ls'  , 'List buffers'],
+    \ 'n' : [':bnext'  , 'Next buffer'],
+    \ 'p' : [':bprevious'  , 'Previous buffer'],
 \ }
 
 let g:which_key_map.t = {
-\ 'name' : '+tabs' ,
-\ 'c' : [':tabclose'  , 'Close tabs'],
-\ 'l' : [':tabs'  , 'List tabs'],
+    \ 'name' : '+tabs' ,
+    \ 'c' : [':tabclose'  , 'Close tabs'],
+    \ 'l' : [':tabs'  , 'List tabs'],
 \ }
 
 let g:which_key_map.c = {
-\ 'name' : '+comment' ,
-\ 'l' : ['<plug>NERDCommenterToggle'  , 'comment line'],
+    \ 'name' : '+comment' ,
+    \ 'l' : ['<plug>NERDCommenterInvert', 'comment line'],
 \ }
 
 " c is for floaterm
 let g:which_key_map.a = {
-\ 'name' : '+applications' ,
-\ 'f' : [':FloatermNew fzf'                               , 'fzf'],
-\ 'g' : [':FloatermNew lazygit'                           , 'git'],
-\ 'd' : [':FloatermNew lazydocker'                        , 'docker'],
-\ 'n' : [':FloatermNew node'                              , 'node'],
-\ 'p' : [':FloatermNew python'                            , 'python'],
-\ 'r' : [':FloatermNew ranger'                            , 'ranger'],
-\ 't' : [':FloatermToggle'                                , 'toggle'],
-\ 's' : [':FloatermNew ncdu'                              , 'ncdu'],
+    \ 'name' : '+applications' ,
+    \ 'f' : [':FloatermNew fzf'                               , 'fzf'],
+    \ 'g' : [':FloatermNew lazygit'                           , 'git'],
+    \ 'd' : [':FloatermNew lazydocker'                        , 'docker'],
+    \ 'n' : [':FloatermNew node'                              , 'node'],
+    \ 'p' : [':FloatermNew python'                            , 'python'],
+    \ 'r' : [':FloatermNew ranger'                            , 'ranger'],
+    \ 't' : [':FloatermToggle'                                , 'toggle'],
+    \ 's' : [':FloatermNew ncdu'                              , 'ncdu'],
 \ }
 
 let g:which_key_map.n = {
-\ 'name' : '+nvim',
-\ 'k' : [':e ~/.config/nvim/keys/which-key.vim', 'edit keys config'],
-\ 'i' : [':e ~/.config/nvim/init.vim', 'edit init config'],
-\ 'p' : [':e ~/.config/nvim/vim-plug/plugins.vim', 'edit plug config'],
-\ 'g' : [':e ~/.config/nvim/general/settings.vim', 'edit general settings'],
-\ 'c' : [':CocConfig', 'edit coc.nvim settings'],
+    \ 'name' : '+nvim',
+    \ 'k' : [':e ~/.config/nvim/vimscript/whichkey/init.vim', 'edit keys config'],
+    \ 'i' : [':e ~/.config/nvim/init.lua', 'edit init config'],
+    \ 'p' : [':e ~/.config/nvim/lua/plugins/init.lua', 'edit plug config'],
+    \ 'g' : [':e ~/.config/nvim/lua/settings.lua', 'edit general settings'],
+    \ 'G' : [':e ~/.config/nvim/lua/global-settings.lua', 'edit global settings'],
 \ }
 
 
 let g:which_key_map.d = {
-\ 'name' : '+diff',
-\ 't' : [':diffthis', 'active diff this file'],
-\ 'o' : [':diffoff', 'disable diff in file'],
-\ 's' : [':diffsplit', 'open diff in split mode'],
+    \ 'name' : '+diff',
+    \ 't' : [':diffthis', 'active diff this file'],
+    \ 'o' : [':diffoff', 'disable diff in file'],
+    \ 's' : [':diffsplit', 'open diff in split mode'],
+    \ 'g' : [':Gdiffsplit', 'open git diff in current file'],
 \}
 
 let g:which_key_map.f = {
-\ 'name' : '+files',
-\ 't' : [':Explore', 'Open netrw'],
-\ 'r' : [':FloatermNew ranger', 'ranger'],
+    \ 'name' : '+files',
+    \ 't' : [':Explore', 'Open netrw'],
+    \ 'r' : [':FloatermNew ranger', 'ranger'],
 \}
 
 " autocmd BufNewFile,BufRead *.go let g:which_key_map.o = {
@@ -111,9 +114,9 @@ let g:which_key_map.f = {
 " \ }
 
 let g:which_key_map.o = {
-\ 'name' : '+Open',
-\ 'q' : [':copen', 'Open quickfix'],
-\ 'l' : [':lopen', 'Open local list'],
+    \ 'name' : '+Open',
+    \ 'q' : [':copen', 'Open quickfix'],
+    \ 'l' : [':lopen', 'Open local list'],
 \ }
 
 augroup lang_keys
@@ -123,8 +126,8 @@ augroup lang_keys
     \ 'a' : [':GoAlternative', 'go alternative'],
     \ 'b' : [':GoBuild', 'go build'],
     \ 'c' : [':GoCoverageToggle', 'go coverage toggle'],
-    \ 'd' : [':GoDoc', 'go doc'],
-    \ 'g' : [':GoDef', 'go def'],
+    \ 'd' : [':Lspsaga hover_doc', 'go doc'],
+    \ 'g' : [':GoToDef', 'go def'],
     \ 'h' : [':GoInfo', 'go info'],
     \ 'i' : [':GoImplements', 'go implements'],
     \ 'I' : [':GoImports', 'format impoprts'],
