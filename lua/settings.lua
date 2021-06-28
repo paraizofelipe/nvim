@@ -40,7 +40,7 @@ vim.cmd("set showcmd")
 vim.cmd("set cc=123")
 vim.cmd("set completeopt-=preview")
 
--- Python 
+-- Python
 vim.g.python3_host_prog = '~/.config/nvim/host/python-nvim/bin/python'
 
 -- NodeJS

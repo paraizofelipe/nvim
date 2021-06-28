@@ -79,7 +79,9 @@ return require('packer').startup(function(use)
     use 'ryanoasis/vim-devicons'
 
     -- Status line
-    use 'glepnir/galaxyline.nvim'
+    -- use 'glepnir/galaxyline.nvim'
+    use 'vim-airline/vim-airline'
+    use 'vim-airline/vim-airline-themes'
 
     -- Treesitter
     -- use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
