@@ -1,15 +1,13 @@
 vim.g.startify_custom_header = {
-'                                                          ',
-'         ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗',
-'         ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║',
-'         ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║',
-'         ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║',
-'         ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║',
-'         ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝',
-'                                                          ',
-'                                                          ',
-'                     Author: Felipe Paraizo               ',
-'                     URL: http://paraizo.dev              ',
+    '                                                  ',
+    '    ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗',
+    '    ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║',
+    '    ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║',
+    '    ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║',
+    '    ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║',
+    '    ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝',
+    '                                                   ', '                                                  ',
+    '              Author: Felipe Paraizo               ', '             URL: http://paraizo.dev              '
 }
 
 vim.g.startify_session_dir = '~/.config/nvim/session'
@@ -24,11 +22,16 @@ vim.g.webdevicons_enable_startify = 1
 local currentDir = vim.cmd('pwd')
 
 vim.g.startify_lists = {
-    { type= 'files',     header= {'   Files'} },
-    { type= 'dir',       header= {'   Current Directory'} },
-    { type= 'sessions',  header= {'   Sessions'} },
-    { type= 'bookmarks', header= {'   Bookmarks'} },
+    {type = 'files', header = {'   Files'}}, {type = 'dir', header = {'   Current Directory'}}, {type = 'sessions', header = {'   Sessions'}},
+    {type = 'bookmarks', header = {'   Bookmarks'}}
 }
+
+vim.api.nvim_exec([[
+ augroup startify
+ autocmd!
+autocmd User Startified setlocal buftype=nofile
+ augroup END
+]], false)
 
 vim.cmd([[
 function! StartifyEntryFormat()
@@ -36,9 +39,4 @@ function! StartifyEntryFormat()
 endfunction
 ]])
 
-vim.g.startify_bookmarks = {
-    { c = '~/.i3/config' },
-    { i = '~/.config/nvim/init.lua' },
-    { z = '~/.zshrc' },
-}
-
+vim.g.startify_bookmarks = {{c = '~/.i3/config'}, {i = '~/.config/nvim/init.lua'}, {z = '~/.zshrc'}}

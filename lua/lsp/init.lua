@@ -1,16 +1,12 @@
-vim.fn.sign_define("LspDiagnosticsSignError",
-                   {texthl = "GruvboxRedSign", text = "", numhl = "LspDiagnosticsSignError"})
-vim.fn.sign_define("LspDiagnosticsSignWarning",
-                   {texthl = "GruvboxYellowSign", text = "", numhl = "LspDiagnosticsSignWarning"})
-vim.fn.sign_define("LspDiagnosticsSignHint",
-                   {texthl = "GruvboxAquaSign", text = "", numhl = "LspDiagnosticsSignHint"})
-vim.fn.sign_define("LspDiagnosticsSignInformation",
-                   {texthl = "GruvboxBlueSign", text = "", numhl = "LspDiagnosticsSignInformation"})
+vim.fn.sign_define("LspDiagnosticsSignError", {texthl = "GruvboxRedSign", text = "", numhl = "LspDiagnosticsSignError"})
+vim.fn.sign_define("LspDiagnosticsSignWarning", {texthl = "GruvboxYellowSign", text = "", numhl = "LspDiagnosticsSignWarning"})
+vim.fn.sign_define("LspDiagnosticsSignHint", {texthl = "GruvboxAquaSign", text = "", numhl = "LspDiagnosticsSignHint"})
+vim.fn.sign_define("LspDiagnosticsSignInformation", {texthl = "GruvboxBlueSign", text = "", numhl = "LspDiagnosticsSignInformation"})
 
--- vim.cmd('nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>')
+vim.cmd('nnoremap <silent> gD <cmd>lua vim.lsp.buf.definition()<CR>')
 -- vim.cmd('nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>')
--- vim.cmd('nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>')
--- vim.cmd('nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>')
+vim.cmd('nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>')
+vim.cmd('nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>')
 vim.cmd('nnoremap <silent> ca :Lspsaga code_action<CR>')
 vim.cmd('nnoremap <silent> K :Lspsaga hover_doc<CR>')
 -- vim.cmd('nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>')
@@ -53,23 +49,23 @@ function lsp_config.tsserver_on_attach(client, bufnr)
 end
 
 do
-  local method = "textDocument/publishDiagnostics"
-  local default_handler = vim.lsp.handlers[method]
-  vim.lsp.handlers[method] = function(err, method, result, client_id, bufnr, config)
-    default_handler(err, method, result, client_id, bufnr, config)
-    local diagnostics = vim.lsp.diagnostic.get_all()
-    local qflist = {}
-    for bufnr, diagnostic in pairs(diagnostics) do
-      for _, d in ipairs(diagnostic) do
-        d.bufnr = bufnr
-        d.lnum = d.range.start.line + 1
-        d.col = d.range.start.character + 1
-        d.text = d.message
-        table.insert(qflist, d)
-      end
+    local method = "textDocument/publishDiagnostics"
+    local default_handler = vim.lsp.handlers[method]
+    vim.lsp.handlers[method] = function(err, method, result, client_id, bufnr, config)
+        default_handler(err, method, result, client_id, bufnr, config)
+        local diagnostics = vim.lsp.diagnostic.get_all()
+        local qflist = {}
+        for bufnr, diagnostic in pairs(diagnostics) do
+            for _, d in ipairs(diagnostic) do
+                d.bufnr = bufnr
+                d.lnum = d.range.start.line + 1
+                d.col = d.range.start.character + 1
+                d.text = d.message
+                table.insert(qflist, d)
+            end
+        end
+        vim.lsp.util.set_qflist(qflist)
     end
-    vim.lsp.util.set_qflist(qflist)
-  end
 end
 
 -- Use a loop to conveniently both setup defined servers

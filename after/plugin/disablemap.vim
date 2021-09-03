@@ -16,4 +16,4 @@ silent! unmap <leader>cc
 silent! unmap <leader>f
 
 " Disable mappings to vim-go
-silent! unmap gd
+" silent! unmap gd
