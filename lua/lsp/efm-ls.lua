@@ -1,6 +1,6 @@
 require"lspconfig".efm.setup {
     init_options = {documentFormatting = true},
-    filetypes = {"lua", "python", "json", "yaml"},
+    filetypes = {"lua", "python", "yaml"},
     logFile = "~/output.log",
     logLevel = 1,
     settings = {
@@ -8,18 +8,19 @@ require"lspconfig".efm.setup {
         languages = {
             lua = {
                 {
-                    formatCommand = "lua-format -i --no-keep-simple-function-one-line --no-break-after-operator --column-limit=150 --break-after-table-lb",
+                    formatCommand = "lua-format -i --no-keep-simple-function-one-line --no-break-after-operator --break-after-table-lb",
                     formatStdin = true
                 }
             },
             python = {
-                -- {lintCommand = 'flake8 --stdin-display-name ${INPUT} -', lintStdin = true, lintFormats = {'%f:%l:%c: %m'}},
-                {formatCommand = 'black -t py38 --line-length 79 --quiet -', formatStdin = true}, {
+                {
+                    formatCommand = 'black -t py38 --line-length 79 --quiet -',
+                    formatStdin = true
+                }, {
                     formatCommand = 'isort --multi-line=3 --trailing-comma --force-grid-wrap=0 --use-parentheses --line-width=88 -l 79 -s venv --quiet -',
                     formatStdin = true
                 }
             },
-            -- json = {{formatCommand = 'prettier ${--tab-width:tabWidth} --parser json'}},
             yaml = {{lintCommand = 'yamllint -f parsable -', lintStdin = true}}
         }
     }
@@ -27,7 +28,6 @@ require"lspconfig".efm.setup {
 
 vim.cmd('autocmd BufWritePre *.lua lua vim.lsp.buf.formatting_sync(nil, 100)')
 vim.cmd('autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync()')
--- vim.cmd('autocmd BufWritePre *.json lua vim.lsp.buf.formatting_sync()')
 vim.cmd('autocmd BufWritePre *.yml lua vim.lsp.buf.formatting_sync()')
 vim.cmd('autocmd BufWritePre *.yaml lua vim.lsp.buf.formatting_sync()')
 

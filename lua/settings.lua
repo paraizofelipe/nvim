@@ -52,6 +52,16 @@ vim.g.netrw_banner = 0
 vim.g.netrw_keepdir = 0
 
 vim.api.nvim_exec([[
+    augroup terminal_settings
+        autocmd!
+        autocmd FileType floaterm set number norelativenumber
+        autocmd FileType floaterm set nonumber
+        autocmd FileType floaterm set nocursorline
+        autocmd FileType floaterm hi Floaterm guibg=#1d2021
+    augroup END
+]], false)
+
+vim.api.nvim_exec([[
     augroup long_lines
         autocmd!
         autocmd FileType qf wincmd J

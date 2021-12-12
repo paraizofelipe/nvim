@@ -4,7 +4,10 @@ local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
 
 if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
+    fn.system({
+        'git', 'clone', 'https://github.com/wbthomason/packer.nvim',
+        install_path
+    })
     execute 'packadd packer.nvim'
 end
 
@@ -18,25 +21,58 @@ require('packer').init({display = {auto_clean = false}})
 
 return require('packer').startup(function(use)
 
-    -- My plugins
-    use 'paraizofelipe/translator.nvim'
-
     -- Packer can manage itself as an optional plugin
     use 'wbthomason/packer.nvim'
+
+    -- My plugins
+    use 'paraizofelipe/translator.nvim'
+    use '~/projects/good-night.nvim'
+    use '~/projects/orgpp.nvim'
+    use '~/projects/telescope_session'
+    -- use 'nvim-telescope/telescope.nvim'
+
+    use {
+        'nvim-telescope/telescope.nvim',
+        config = function()
+            require('plugins.telescope').setup()
+            require('telescope').load_extension('telescope_session')
+        end
+    }
 
     -- Theme
     use 'morhetz/gruvbox'
 
     -- Editor
     use 'mg979/vim-visual-multi'
-    use 'mhinz/vim-startify'
-    use 'justinmk/vim-sneak'
     use 'preservim/nerdcommenter'
     use 'rhysd/clever-f.vim'
-    use 'tpope/vim-vinegar'
-    use 'tpope/vim-surround'
-    -- use 'vim-ctrlspace/vim-ctrlspace'
     use 'lukas-reineke/indent-blankline.nvim'
+    -- use 'tpope/vim-vinegar'
+    -- use 'tpope/vim-surround'
+    -- use 'vim-ctrlspace/vim-ctrlspace'
+
+    -- Startup
+    use 'mhinz/vim-startify'
+    -- use {
+    -- 'glepnir/dashboard-nvim',
+    -- config = function()
+    -- require('plugins.dashboard').setup()
+    -- end
+    -- }
+
+    -- Session
+    -- use {
+    -- 'rmagatti/auto-session',
+    -- config = function()
+    -- require('plugins.session').setup()
+    -- end
+    -- }
+    -- use {
+    -- 'rmagatti/session-lens',
+    -- config = function()
+    -- require('plugins.lens').setup()
+    -- end
+    -- }
 
     -- Debugging
     use {'puremourning/vimspector'}
@@ -51,10 +87,17 @@ return require('packer').startup(function(use)
     use 'fatih/vim-go'
 
     -- Telescope
-    use {'nvim-telescope/telescope.nvim', requires = {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'}}
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'},
+        config = function()
+            require('plugins.telescope').setup()
+        end
+    }
 
     -- Keys
-    use 'liuchengxu/vim-which-key'
+    -- use 'liuchengxu/vim-which-key'
+    use 'folke/which-key.nvim'
 
     -- Color
     use 'norcalli/nvim-colorizer.lua'
@@ -91,24 +134,30 @@ return require('packer').startup(function(use)
 
     -- Tabline
     use 'jose-elias-alvarez/buftabline.nvim'
+    -- use {
+    -- 'romgrk/barbar.nvim',
+    -- config = function()
+    -- require('plugins.barbar')
+    -- end
+    -- }
+    -- use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
 
     -- Treesitter
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-    -- use 'p00f/nvim-ts-rainbow'
-    -- use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
-    -- use 'nvim-treesitter/playground'
-    -- use 'JoosepAlviste/nvim-ts-context-commentstring'
-    -- use 'windwp/nvim-ts-autotag'
 
     -- Git
-    -- use 'TimUntersberger/neogit'
     use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
-    -- use 'f-person/git-blame.nvim'
     use 'tpope/vim-fugitive'
     use 'tpope/vim-rhubarb'
     use 'samoshkin/vim-mergetool'
 
     -- Database
-    use {'tpope/vim-dadbod', requires = {'kristijanhusak/vim-dadbod-ui', 'kristijanhusak/vim-dadbod-completion'}}
+    use {
+        'tpope/vim-dadbod',
+        requires = {
+            'kristijanhusak/vim-dadbod-ui',
+            'kristijanhusak/vim-dadbod-completion'
+        }
+    }
 
 end)

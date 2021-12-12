@@ -8,11 +8,11 @@ require("buftabline").setup {
     go_to_maps = true,
     flags = {modified = " ", not_modifiable = "[-]", readonly = ""},
     hlgroups = {
-        current = "BufTabLineCurrent",
+        current = "Conceal",
         normal = "BufTabLineHidden",
         active = "BufTabLineActive",
         spacing = nil,
-        modified_current = "DiffChange",
+        modified_current = "PreProc",
         modified_normal = nil,
         modified_active = nil,
         tabpage_current = nil,

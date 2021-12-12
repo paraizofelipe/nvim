@@ -14,7 +14,16 @@ require'compe'.setup {
     max_menu_width = 100,
     documentation = true,
 
-    source = {path = true, buffer = true, calc = true, nvim_lsp = true, nvim_lua = true, vsnip = true, orgmode = true, neorg = true}
+    source = {
+        path = true,
+        buffer = true,
+        calc = true,
+        nvim_lsp = true,
+        nvim_lua = true,
+        vsnip = true,
+        orgmode = true,
+        neorg = true
+    }
 }
 
 -- vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
