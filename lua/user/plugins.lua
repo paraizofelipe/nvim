@@ -76,6 +76,7 @@ return packer.startup(function(use)
 	use({ "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" })
 	use("simrat39/symbols-outline.nvim")
 	use("rhysd/clever-f.vim") -- vimscript
+	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 
 	-- Debug
 	-- use("puremourning/vimspector")

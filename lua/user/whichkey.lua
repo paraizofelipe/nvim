@@ -231,6 +231,13 @@ local mappings = {
 		n = { "<cmd>UltestNearest<cr>", "Clear Ultest" },
 		v = { "<cmd>HighlightCoverage<cr>", "Coverage" },
 	},
+
+	m = {
+		name = "Mergetools",
+		t = { "<cmd>MergetoolToggle<cr>", "MergetoolToggle" },
+		l = { "<cmd>MergetoolPreferLocal<cr>", "MergetoolPreferLocal" },
+		r = { "<cmd>MergetoolPreferRemote<cr>", "MergetoolPreferRemote" },
+	},
 }
 
 local vopts = {

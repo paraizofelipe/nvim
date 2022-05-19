@@ -13,7 +13,7 @@ null_ls.setup({
 	sources = {
 		formatting.gofmt,
 		formatting.goimports,
-		formatting.golines,
+		-- formatting.golines,
 		formatting.stylua,
 		formatting.isort,
 		diagnostics.flake8,
