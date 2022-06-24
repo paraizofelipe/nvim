@@ -1,6 +1,6 @@
 local null_ls_status_ok, null_ls = pcall(require, "null-ls")
 if not null_ls_status_ok then
-	return
+    return
 end
 
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
@@ -8,41 +8,58 @@ local formatting = null_ls.builtins.formatting
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 local diagnostics = null_ls.builtins.diagnostics
 
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 null_ls.setup({
-	debug = false,
-	sources = {
-		formatting.gofmt,
-		formatting.goimports,
-		-- formatting.golines,
-		formatting.stylua,
-		formatting.isort,
-		diagnostics.flake8,
-		-- formatting.isort.with({
-		-- 	args = {
-		-- 		"--multi-line",
-		-- 		"3",
-		-- 		"--trailing-comma",
-		-- 		"--force-grid-wrap",
-		-- 		"0",
-		-- 		"--use-parentheses",
-		-- 		"--line-width",
-		-- 		"88",
-		-- 		"-l",
-		-- 		"79",
-		-- 		"-s",
-		-- 		"venv",
-		-- 		"--quiet",
-		-- 		"-",
-		-- 	},
-		-- }),
-		-- formatting.yapf,
-		formatting.black.with({ args = { "-t", "py38", "--line-length", "79", "--quiet", "-" } }),
-		-- formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
-		-- diagnostics.flake8.with({ extra_args = { "--max-line-length", "79" } }),
-	},
-	on_attach = function(client)
-		if client.resolved_capabilities.document_formatting then
-			vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
-		end
-	end,
+    debug = true,
+    sources = {
+        formatting.gofmt,
+        formatting.goimports,
+        formatting.stylua,
+        diagnostics.flake8,
+        formatting.isort.with({
+            args = {
+                "--multi-line",
+                "3",
+                "--trailing-comma",
+                "--force-grid-wrap",
+                "0",
+                "--use-parentheses",
+                "--line-width",
+                "88",
+                "-l",
+                "79",
+                "-s",
+                "venv",
+                "--quiet",
+                "-",
+            },
+        }),
+        formatting.black.with({
+            args = {
+                "-t",
+                "py38",
+                "--line-length",
+                "79",
+                "--fast",
+                "--quiet",
+                "-",
+            }
+        }),
+    },
+
+    on_attach = function(client, bufnr)
+        if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                group = augroup,
+                buffer = bufnr,
+                callback = function()
+                    -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) insteadvim
+                    -- vim.lsp.buf.format({ bufnr = bufnr })
+                    vim.lsp.buf.formatting_sync()
+                end,
+            })
+        end
+    end,
 })
