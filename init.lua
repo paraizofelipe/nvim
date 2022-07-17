@@ -1,5 +1,3 @@
-
-vim.api.nvim_set_hl(0, 'LspDiagnosticSignError', { fg = "Red", bg = "#333333" })
 require("user.options")
 require("user.keymaps")
 require("user.plugins")
@@ -29,11 +27,11 @@ require("user.neotest")
 require("user.symbols-outline")
 require("user.gonvim")
 require("user.vimwiki")
+require("user.dap")
 
 -- require("user.alpha")
 -- require("user.neorg")
 -- require("user.ultest")
 -- require("user.diffview")
--- require("user.dap")
 -- require("user.toggleterm")
 -- require("user.bufferline")

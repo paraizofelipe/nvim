@@ -1,11 +1,18 @@
-vim.g.wiki = {}
-vim.g.wiki.path = '~/notes/'
-vim.g.syntax = 'markdown'
-vim.g.ext = '.md'
-vim.g.automatic_nested_syntaxes = 1
-vim.g.wiki.nested_syntaxes = { python = 'python', go = 'go', json = 'json', yaml = 'yaml', bash = 'bash' }
-vim.g.auto_tags = 1
-vim.g.vimwiki_folding = 'list'
+vim.g.vimwiki_list = {
+	{
+		name = "notes",
+		path = "~/notes/",
+		path_html = "~/notes/html/",
+		syntax = "markdown",
+		ext = ".md",
+		custom_wiki2html = "vimwiki_markdown",
+		automatic_nested_syntaxes = 1,
+		nested_syntaxes = { python = "python", go = "go", json = "json", yaml = "yaml", bash = "bash" },
+		auto_tags = 1,
+		vimwiki_folding = "list",
+		css_name = "style.css",
+	},
+}
 
 vim.cmd([[
 function! VimwikiFindIncompleteTasks()
@@ -21,5 +28,5 @@ function! VimwikiFindAllIncompleteTasks()
 endfunction
 ]])
 
-vim.api.nvim_set_keymap('n', '<leader>wa', ':call VimwikiFindAllIncompleteTasks()<CR>', { expr = true })
-vim.api.nvim_set_keymap('n', '<leader>wx', ':call VimwikiFindIncompleteTasks()<CR>', { expr = true })
+vim.api.nvim_set_keymap("n", "<leader>wa", ":call VimwikiFindAllIncompleteTasks()<CR>", { expr = true })
+vim.api.nvim_set_keymap("n", "<leader>wx", ":call VimwikiFindIncompleteTasks()<CR>", { expr = true })
