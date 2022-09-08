@@ -44,7 +44,6 @@ return packer.startup(function(use)
 	use("paraizofelipe/translator.nvim")
 	use("~/projects/good-night.nvim")
 	use("~/projects/orgpp.nvim")
-	use("~/projects/telescope_session")
 	use({ "michaelb/sniprun", run = "bash ./install.sh" })
 
 	-- General
@@ -57,7 +56,6 @@ return packer.startup(function(use)
 	use("kyazdani42/nvim-web-devicons")
 	use("kyazdani42/nvim-tree.lua")
 	use("jose-elias-alvarez/buftabline.nvim")
-	-- use("akinsho/bufferline.nvim")
 	use("moll/vim-bbye")
 	use("nvim-lualine/lualine.nvim")
 	-- use("akinsho/toggleterm.nvim")
@@ -91,7 +89,8 @@ return packer.startup(function(use)
 	use("simrat39/symbols-outline.nvim")
 	use("rhysd/clever-f.vim") -- vimscript
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
-	use("petobens/poet-v")
+	use({ "jedrzejboczar/possession.nvim" })
+	-- use({ "glepnir/dashboard-nvim" })
 
 	-- Debug
 	-- use("puremourning/vimspector")
@@ -110,7 +109,7 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-nvim-lua")
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
-	use("mhinz/vim-startify")
+	-- use("mhinz/vim-startify")
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine

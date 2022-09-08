@@ -4,7 +4,8 @@ if not status_ok then
 end
 
 telescope.load_extension("media_files")
-telescope.load_extension("telescope_session")
+-- telescope.load_extension("telescope_session")
+telescope.load_extension("possession")
 
 local actions = require("telescope.actions")
 

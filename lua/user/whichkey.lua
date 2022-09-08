@@ -78,7 +78,7 @@ local opts = {
 }
 
 local mappings = {
-	["/"] = { '<cmd>lua require("Comment.api").toggle_current_linewise()<CR>', "Comment" },
+	["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
 	["B"] = {
 		"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
 		"Buffers",
@@ -206,9 +206,13 @@ local mappings = {
 		t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
 		f = { "<cmd>Telescope find_files<cr>", "Find files" },
 		s = {
-			"<cmd>Telescope telescope_session<cr>",
+			"<cmd>Telescope possession list<cr>",
 			"Load session with telescope",
 		},
+		-- s = {
+		-- 	"<cmd>Telescope telescope_session<cr>",
+		-- 	"Load session with telescope",
+		-- },
 	},
 
 	a = {
@@ -224,7 +228,7 @@ local mappings = {
 
 	t = {
 		name = "Tests",
-        d = { '<cmd>lua require("neotest").run.run({strategy = "dap"})<cr>', "Run tests in debug"},
+		d = { '<cmd>lua require("neotest").run.run({strategy = "dap"})<cr>', "Run tests in debug" },
 		a = { '<cmd>lua require("neotest").run.attach()<cr>', "Attach PDB" },
 		s = { '<cmd>lua require("neotest").summary.toggle()<cr>', "Show summary tests" },
 		r = { '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<cr>', "Run tests" },
@@ -251,7 +255,7 @@ local vopts = {
 	nowait = true, -- use `nowait` when creating keymaps
 }
 local vmappings = {
-	["/"] = { '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', "Comment" },
+	["/"] = { '<ESC><cmd>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', "Comment" },
 }
 
 which_key.setup(setup)
