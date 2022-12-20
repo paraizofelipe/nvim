@@ -20,3 +20,14 @@ vim.cmd([[
         autocmd FileType help wincmd K
     augroup END
 ]])
+
+local term_group = vim.api.nvim_create_augroup("TerminalStyle", { clear = true })
+vim.api.nvim_create_autocmd("TermOpen", {
+	group = term_group,
+	callback = function()
+		vim.api.nvim_win_set_option(0, "relativenumber", false)
+		vim.api.nvim_win_set_option(0, "number", false)
+		vim.api.nvim_win_set_option(0, "cursorline", false)
+		--[[ vim.api.nvim_set_hl() ]]
+	end,
+})

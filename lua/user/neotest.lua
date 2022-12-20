@@ -9,6 +9,7 @@ require("neotest").setup({
 			experimental = {
 				test_table = true,
 			},
+			args = { "-count=1", "-timeout=60s" },
 		}),
 		-- require("neotest-plenary"),
 		-- require("neotest-vim-test")({
