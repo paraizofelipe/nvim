@@ -71,17 +71,17 @@ return packer.startup(function(use)
     use("mgedmin/coverage-highlight.vim")
     use("vimwiki/vimwiki")
     use("direnv/direnv.vim")
-    use("klen/nvim-test")
+    --[[ use("klen/nvim-test") ]]
     --[[ use("rest-nvim/rest.nvim") ]]
     use({
         "nvim-neotest/neotest",
         requires = {
-            "vim-test/vim-test",
+            --[[ "vim-test/vim-test", ]]
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
-            --[[ "antoinemadec/FixCursorHold.nvim", ]]
-            "nvim-neotest/neotest-vim-test",
-            "nvim-neotest/neotest-plenary",
+            "antoinemadec/FixCursorHold.nvim",
+            --[[ "nvim-neotest/neotest-vim-test", ]]
+            --[[ "nvim-neotest/neotest-plenary", ]]
             "nvim-neotest/neotest-go",
             "nvim-neotest/neotest-python",
         },
@@ -98,6 +98,10 @@ return packer.startup(function(use)
 
     -- Colorschemes
     use("morhetz/gruvbox")
+
+    -- Copilot
+    --[[ use("github/copilot.vim") ]]
+    use("zbirenbaum/copilot.lua")
 
     -- cmp plugins
     use("hrsh7th/nvim-cmp") -- The completion plugin

@@ -23,7 +23,7 @@ require("user.vim-fugitive")
 require("user.mergetool")
 require("user.autocommands")
 require("user.neotest")
-require("user.nvim-test")
+--[[ require("user.nvim-test") ]]
 --[[ require("user.symbols-outline") ]]
 require("user.gonvim")
 require("user.vimwiki")
@@ -31,6 +31,7 @@ require("user.dap")
 require("user.possession")
 require("user.alpha")
 require("user.semshi")
+--[[ require("user.copilot") ]]
 --[[ require("user.rest") ]]
 -- require("user.startify")
 -- require("user.dashboard")

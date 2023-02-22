@@ -64,47 +64,47 @@ null_ls.setup({
         formatting.goimports,
         formatting.stylua,
         formatting.shfmt,
-        formatting.isort.with({
-            args = {
-                "--multi-line",
-                "3",
-                "--trailing-comma",
-                "--force-grid-wrap",
-                "0",
-                "--use-parentheses",
-                "--line-width",
-                "88",
-                "-l",
-                "79",
-                "-s",
-                "venv",
-                "--quiet",
-                "-",
-            },
-        }),
-        formatting.black.with({
-            args = {
-                "-t",
-                "py38",
-                "-l",
-                "79",
-                "--fast",
-                "--quiet",
-                "-",
-            },
-        }),
+        --[[ formatting.isort.with({ ]]
+        --[[     args = { ]]
+        --[[         "--multi-line", ]]
+        --[[         "3", ]]
+        --[[         "--trailing-comma", ]]
+        --[[         "--force-grid-wrap", ]]
+        --[[         "0", ]]
+        --[[         "--use-parentheses", ]]
+        --[[         "--line-width", ]]
+        --[[         "88", ]]
+        --[[         "-l", ]]
+        --[[         "79", ]]
+        --[[         "-s", ]]
+        --[[         "venv", ]]
+        --[[         "--quiet", ]]
+        --[[         "-", ]]
+        --[[     }, ]]
+        --[[ }), ]]
+        --[[ formatting.black.with({ ]]
+        --[[     args = { ]]
+        --[[         "-t", ]]
+        --[[         "py38", ]]
+        --[[         "-l", ]]
+        --[[         "79", ]]
+        --[[         "--fast", ]]
+        --[[         "--quiet", ]]
+        --[[         "-", ]]
+        --[[     }, ]]
+        --[[ }), ]]
     },
 
     on_init = function()
         local virtual_env_path = virtual_env_cmd()
 
-        --[[ local blue_path = virtual_env_path .. "blue" ]]
+        local blue_path = virtual_env_path .. "blue"
         --[[ local black_path = virtual_env_path .. "black" ]]
         local flake8_path = virtual_env_path .. "flake8"
         local isort_path = virtual_env_path .. "isort"
 
         null_ls.register({
-            --[[ formatting.blue.with({ command = blue_path }), ]]
+            formatting.blue.with({ command = blue_path }),
             diagnostics.flake8.with({ command = flake8_path }),
             --[[ formatting.black.with({ command = black_path }), ]]
             formatting.isort.with({ command = isort_path }),
