@@ -1,1 +1,1 @@
-vim.cmd("set diffopt=vertical")
+vim.cmd("set diffopt+=iwhite")
