@@ -47,7 +47,7 @@ dashboard.section.header.val = {
 }
 
 dashboard.section.buttons.val = {
-	button("s", "   List sessions", ":Telescope possession list <CR>"),
+	button("s", "   Load last session", ":lua require('persistence').load({ last = true })<CR>"),
 	button("f", "   Find file", ":Telescope find_files <CR>"),
 	button("e", "   New file", ":ene <BAR> startinsert <CR>"),
 	button("p", "   Find project", ":Telescope projects <CR>"),

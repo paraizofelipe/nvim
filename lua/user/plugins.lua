@@ -55,7 +55,8 @@ return packer.startup(function(use)
 	use("ryanoasis/vim-devicons")
 	use("kyazdani42/nvim-web-devicons")
 	use("kyazdani42/nvim-tree.lua")
-	use("jose-elias-alvarez/buftabline.nvim")
+	-- use("jose-elias-alvarez/buftabline.nvim") -- Deprecated
+	use("akinsho/bufferline.nvim")
 	use("moll/vim-bbye")
 	use("nvim-lualine/lualine.nvim")
 	use("ahmedkhalf/project.nvim")
@@ -71,12 +72,12 @@ return packer.startup(function(use)
 	use("mgedmin/coverage-highlight.vim")
 	use("vimwiki/vimwiki")
 	use("direnv/direnv.vim")
+	use("RRethy/vim-illuminate")
 	--[[ use("klen/nvim-test") ]]
-	--[[ use("rest-nvim/rest.nvim") ]]
+	use("rest-nvim/rest.nvim")
 	use({
 		"nvim-neotest/neotest",
 		requires = {
-			--[[ "vim-test/vim-test", ]]
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
 			"antoinemadec/FixCursorHold.nvim",
@@ -89,7 +90,10 @@ return packer.startup(function(use)
 	--[[ use("simrat39/symbols-outline.nvim") ]]
 	use("rhysd/clever-f.vim") -- vimscript
 	use("sindrets/diffview.nvim")
-	use("jedrzejboczar/possession.nvim")
+	-- use("jedrzejboczar/possession.nvim")
+	use("folke/persistence.nvim")
+	use("SmiteshP/nvim-navic")
+	use("MunifTanjim/nui.nvim")
 
 	-- Debug
 	use("mfussenegger/nvim-dap")
@@ -102,7 +106,7 @@ return packer.startup(function(use)
 
 	-- Copilot
 	--[[ use("github/copilot.vim") ]]
-	use("zbirenbaum/copilot.lua")
+	-- use("zbirenbaum/copilot.lua")
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin

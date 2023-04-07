@@ -98,12 +98,17 @@ local mappings = {
 		name = "+buffers",
 		d = { "<cmd>Bdelete!<CR>", "Delete Buffer" },
 		c = { "<cmd>bwipeout<cr>", "Close buffers" },
+		j = { "<cmd>BufferLinePick<cr>", "Jump" },
 		l = {
 			"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
 			"Buffers",
 		},
 		n = { "<cmd>bnext<cr>", "Next buffer" },
 		p = { "<cmd>bprevious<cr>", "Previous buffer" },
+	},
+	r = {
+		name = "+rest",
+		r = { "<Plug>RestNvim<cr>", "Request REST" },
 	},
 	d = {
 		name = "+debug",
@@ -112,27 +117,16 @@ local mappings = {
 		r = { "<cmd>lua require('dap').restart()<cr>", "Restart Debug" },
 		e = { "<cmd>lua require('dapui').eval()<cr>", "Eval expression" },
 		w = { "<cmd>lua require('dapui').watches()<cr>", "Watch values" },
-		b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle breakpoint" },
+		t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle breakpoint" },
 		C = { "<cmd>lua require'dap'.clear_breakpoints()<cr>", "Clear breakpoint" },
 		c = { "<cmd>lua require('dap').continue()<cr>", "Continue" },
 		n = { "<cmd>lua require('dap').step_over()<cr>", "Step over" },
 		o = { "<cmd>lua require('dap').step_out()<cr>", "Step out" },
 		i = { "<cmd>lua require('dap').step_into()<cr>", "Step into" },
-		-- Vimspector
-		-- l = { ":call vimspector#Launch()<cr>", "Launch Debug" },
-		-- r = { "<cmd>VimspectorReset<cr>", "Reset Debug" },
-		-- R = { "<cmd>VimspectorRestart<cr>", "Reset Debug" },
-		-- e = { "<cmd>VimspectorEval<cr>", "Eval expression" },
-		-- w = { "<cmd>VimspectorWatch<cr>", "Watch values" },
-		-- O = { "<cmd>VimspectorShowOutput<cr>", "Show output" },
-		-- B = { "<Plug>VimspectorBalloonEval<cr>", "Balloon eval" },
-		-- b = { ":call vimspector#ToggleBreakpoint()<cr>", "Toggle breakpoint" },
-		-- C = { ":call vimspector#ClearBreakpoints()<cr>", "Clear breakpoint" },
-		-- c = { ":call vimspector#Continue()<cr>", "Continue" },
-		-- S = { ":call vimspector#Stop()<cr>", "Stop debug" },
-		-- n = { ":call vimspector#StepOver()<cr>", "Step over" },
-		-- o = { ":call vimspector#StepOut()<cr>", "Step out" },
-		-- i = { ":call vimspector#StepInto()<cr>", "Step into" },
+		l = {
+			"<cmd>lua require('dap.ext.vscode').load_launchjs(vim.fn.getcwd() .. '/launch.json')<cr>",
+			"Load launch files",
+		},
 	},
 	p = {
 		name = "Packer",
@@ -142,7 +136,6 @@ local mappings = {
 		S = { "<cmd>PackerStatus<cr>", "Status" },
 		u = { "<cmd>PackerUpdate<cr>", "Update" },
 	},
-
 	g = {
 		name = "Git",
 		j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
@@ -164,7 +157,6 @@ local mappings = {
 			"Diff",
 		},
 	},
-
 	l = {
 		name = "LSP",
 		a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
@@ -187,8 +179,8 @@ local mappings = {
 		l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
 		q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
 		r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-		--[[ s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" }, ]]
-		s = { "<cmd>SymbolsOutline<cr>", "Document Symbols" },
+		s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+		-- s = { "<cmd>SymbolsOutline<cr>", "Document Symbols" },
 		S = {
 			"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
 			"Workspace Symbols",
@@ -215,10 +207,8 @@ local mappings = {
 		-- 	"Load session with telescope",
 		-- },
 	},
-
 	a = {
 		name = "Applications",
-
 		t = { "<cmd>FloatermNew<cr>", "Terminal" },
 		p = { "<cmd>FloatermNew ipython<cr>", "Python" },
 		n = { "<cmd>FloatermNew node<cr>", "Node" },
@@ -226,7 +216,6 @@ local mappings = {
 		g = { "<cmd>FloatermNew --wintype=float --width=0.8 --height=0.8 lazygit<cr>", "Git" },
 		r = { "<cmd>FloatermNew --wintype=float --width=0.8 --height=0.8 ranger<cr>", "Ranger" },
 	},
-
 	t = {
 		name = "Tests",
 		d = { '<cmd>lua require("neotest").run.run({strategy = "dap"})<cr>', "Run tests in debug" },
@@ -238,12 +227,17 @@ local mappings = {
 		o = { '<cmd>lua require("neotest").output.open({ enter = true })<cr>', "Show output" },
 		v = { "<cmd>HighlightCoverage<cr>", "Coverage" },
 	},
-
 	m = {
 		name = "Mergetools",
 		t = { "<cmd>MergetoolToggle<cr>", "MergetoolToggle" },
 		l = { "<cmd>MergetoolPreferLocal<cr>", "MergetoolPreferLocal" },
 		r = { "<cmd>MergetoolPreferRemote<cr>", "MergetoolPreferRemote" },
+	},
+	q = {
+		name = "Sessions",
+		d = { "<cmd>lua require('persistence').load()<cr>", "Session of directory" },
+		l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Last session" },
+		s = { "<cmd>lua require('persistence').stop()<cr>", "Stop save session" },
 	},
 }
 

@@ -1,5 +1,13 @@
 local dap, dapui = require("dap"), require("dapui")
 
+vim.fn.sign_define(
+	"DapBreakpoint",
+	{ text = "", texthl = "CocErrorSign", linehl = "DiffviewDiffAddAsDelete", numhl = "" }
+)
+vim.fn.sign_define("DapStopped", { text = "", texthl = "CursorLineNr", linehl = "DiffAdd", numhl = "" })
+
+-- vim.cmd.nvim_create_autocmd("FileType", { pattern = "dapui", command = [[<silent>set mouse=a<CR>]] })
+
 dap.adapters.go = function(callback, config)
 	local stdout = vim.loop.new_pipe(false)
 	local handle
@@ -63,14 +71,22 @@ dap.adapters.python = {
 
 dap.configurations.python = {
 	{
-		type = "python", -- the type here established the link to the adapter definition: `dap.adapters.python`
+		type = "python",
 		request = "launch",
 		name = "Launch file",
-		program = "${file}", -- This configuration will launch the current file if used.
-		pythonPath = "/home/paraizo/.pyenv/versions/py_tests/bin/python",
+		program = "${file}",
+		pythonPath = function()
+			local cwd = vim.fn.getcwd()
+			if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
+				return cwd .. "/venv/bin/python"
+			elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
+				return cwd .. "/.venv/bin/python"
+			else
+				return "/usr/bin/python"
+			end
+		end,
 	},
 }
-
 dapui.setup({
 	icons = { expanded = "▾", collapsed = "▸" },
 	mappings = {
