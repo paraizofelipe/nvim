@@ -6,7 +6,7 @@ M.bg = "#282828"
 M.fg = "#fbf1c7"
 M.day_brightness = 0.3
 
---[[ vim.cmd("hi EndOfBuffer guifg=bg") ]]
+-- vim.cmd("hi EndOfBuffer guifg=bg")
 
 local function darkenColor(color, percentage)
 	local bgColor = M.bg
@@ -41,8 +41,8 @@ require("gruvbox").setup({
 	invert_signs = false,
 	invert_tabline = false,
 	invert_intend_guides = false,
-	inverse = true, -- invert background for search, diffs, statuslines and errors
-	contrast = "", -- can be "hard", "soft" or empty string
+	inverse = true,
+	contrast = "",
 	palette_overrides = {},
 	overrides = {
 		DiffChange = { bg = darkenColor("#5e8e5a", 87), fg = "", reverse = false },

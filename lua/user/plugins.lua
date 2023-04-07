@@ -31,6 +31,7 @@ end
 
 -- Have packer use a popup window
 packer.init({
+	lockfile = true,
 	display = {
 		open_fn = function()
 			return require("packer.util").float({ border = "rounded" })
@@ -41,15 +42,15 @@ packer.init({
 -- Install your plugins here
 return packer.startup(function(use)
 	-- My plugins
-	--[[ use("paraizofelipe/translator.nvim") ]]
-	--[[ use("~/projects/good-night.nvim") ]]
-	--[[ use("~/projects/orgpp.nvim") ]]
+	-- use("paraizofelipe/translator.nvim")
+	-- use("~/projects/good-night.nvim")
+	-- use("~/projects/orgpp.nvim")
 	use({ "michaelb/sniprun", run = "bash ./install.sh" })
 
 	-- General
-	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
-	use("wbthomason/packer.nvim") -- Have packer manage itself
-	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
+	use("nvim-lua/plenary.nvim")
+	use("wbthomason/packer.nvim")
+	use("nvim-lua/popup.nvim")
 	use("windwp/nvim-autopairs")
 	use("numToStr/Comment.nvim")
 	use("ryanoasis/vim-devicons")
@@ -63,17 +64,17 @@ return packer.startup(function(use)
 	use("lewis6991/impatient.nvim")
 	use("lukas-reineke/indent-blankline.nvim")
 	use("goolord/alpha-nvim")
-	--[[ use("antoinemadec/FixCursorHold.nvim") ]]
+	-- use("antoinemadec/FixCursorHold.nvim")
 	use("folke/which-key.nvim")
 	use("mg979/vim-visual-multi")
-	use("samoshkin/vim-mergetool")
+	-- use("samoshkin/vim-mergetool")
 	use("tpope/vim-fugitive")
 	use("voldikss/vim-floaterm")
 	use("mgedmin/coverage-highlight.vim")
 	use("vimwiki/vimwiki")
 	use("direnv/direnv.vim")
 	use("RRethy/vim-illuminate")
-	--[[ use("klen/nvim-test") ]]
+	-- use("klen/nvim-test")
 	use("rest-nvim/rest.nvim")
 	use({
 		"nvim-neotest/neotest",
@@ -81,13 +82,13 @@ return packer.startup(function(use)
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
 			"antoinemadec/FixCursorHold.nvim",
-			--[[ "nvim-neotest/neotest-vim-test", ]]
-			--[[ "nvim-neotest/neotest-plenary", ]]
+			-- "nvim-neotest/neotest-vim-test",
+			-- "nvim-neotest/neotest-plenary",
 			"nvim-neotest/neotest-go",
 			"nvim-neotest/neotest-python",
 		},
 	})
-	--[[ use("simrat39/symbols-outline.nvim") ]]
+	-- use("simrat39/symbols-outline.nvim")
 	use("rhysd/clever-f.vim") -- vimscript
 	use("sindrets/diffview.nvim")
 	-- use("jedrzejboczar/possession.nvim")
@@ -101,11 +102,11 @@ return packer.startup(function(use)
 	use("theHamsta/nvim-dap-virtual-text")
 
 	-- Colorschemes
-	--[[ use("morhetz/gruvbox") ]]
+	-- use("morhetz/gruvbox")
 	use("ellisonleao/gruvbox.nvim")
 
 	-- Copilot
-	--[[ use("github/copilot.vim") ]]
+	-- use("github/copilot.vim")
 	-- use("zbirenbaum/copilot.lua")
 
 	-- cmp plugins
@@ -128,13 +129,6 @@ return packer.startup(function(use)
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("folke/trouble.nvim")
 
-	-- Golang
-	--[[ use("fatih/vim-go") ]]
-	--[[ use("ray-x/go.nvim") ]]
-
-	-- Python
-	--[[ use("numirias/semshi") ]]
-
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
 	use("nvim-telescope/telescope-media-files.nvim")
@@ -151,8 +145,6 @@ return packer.startup(function(use)
 	-- Git
 	use("lewis6991/gitsigns.nvim")
 
-	-- Automatically set up your configuration after cloning packer.nvim
-	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end

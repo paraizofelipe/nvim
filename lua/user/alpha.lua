@@ -74,25 +74,3 @@ dashboard.config.layout[3] = { type = "padding", val = 4 }
 
 dashboard.opts.opts.noautocmd = true
 alpha.setup(dashboard.opts)
-
--- local default = {}
---
--- default.header = {}
---
--- default.buttons = {}
---
--- default.footer = {}
---
--- default.config = {
--- 	layout = {
--- 		{ type = "padding", val = 20 },
--- 		default.header,
--- 		{ type = "padding", val = 4 },
--- 		default.buttons,
--- 		default.footer,
--- 	},
--- }
---
--- alpha.setup = {
---
--- }

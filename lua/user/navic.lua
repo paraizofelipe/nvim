@@ -1,4 +1,9 @@
-require("nvim-navic").setup({
+local status_ok, navic = pcall(require, "navic")
+if not status_ok then
+	return
+end
+
+navic.setup({
 	icons = {
 		File = " ",
 		Module = " ",
@@ -28,7 +33,6 @@ require("nvim-navic").setup({
 		TypeParameter = " ",
 	},
 	highlight = true,
-	-- separator = " " .. lvim.icons.ui.ChevronRight .. " ",
 	separator = " > ",
 	depth_limit = 0,
 	depth_limit_indicator = "..",
@@ -105,5 +109,3 @@ function create_winbar()
 end
 
 create_winbar()
-
--- vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"

@@ -1,6 +1,11 @@
-local configs = require("nvim-treesitter.configs")
-local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
-
+local status_ok, configs, parser_configs = pcall(function()
+	local configs = require("nvim-treesitter.configs")
+	local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
+	return configs, parser_configs
+end)
+if not status_ok then
+	return
+end
 parser_configs.norg_meta = {
 	install_info = {
 		url = "https://github.com/nvim-neorg/tree-sitter-norg-meta",

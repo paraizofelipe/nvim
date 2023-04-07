@@ -1,5 +1,11 @@
--- Lua
-local actions = require("diffview.actions")
+local status_ok, actions, diffview = pcall(require, function()
+	local actions = require("diffview.actions")
+	local deiffview = require("diffview")
+	return actions, diffview
+end)
+if not status_ok then
+	return
+end
 
 require("diffview").setup({
 	diff_binaries = false, -- Show diffs for binaries

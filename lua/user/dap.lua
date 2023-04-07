@@ -1,12 +1,17 @@
-local dap, dapui = require("dap"), require("dapui")
+local status_ok, dap, dapui = pcall(function()
+	local dap = require("dap")
+	local dapui = require("dapui")
+	return dap, dapui
+end)
+if not status_ok then
+	return
+end
 
 vim.fn.sign_define(
 	"DapBreakpoint",
 	{ text = "", texthl = "CocErrorSign", linehl = "DiffviewDiffAddAsDelete", numhl = "" }
 )
 vim.fn.sign_define("DapStopped", { text = "", texthl = "CursorLineNr", linehl = "DiffAdd", numhl = "" })
-
--- vim.cmd.nvim_create_autocmd("FileType", { pattern = "dapui", command = [[<silent>set mouse=a<CR>]] })
 
 dap.adapters.go = function(callback, config)
 	local stdout = vim.loop.new_pipe(false)

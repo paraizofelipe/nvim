@@ -1,4 +1,10 @@
-local rest = require("rest-nvim")
+local status_ok, rest = pcall(require, function()
+	local rest = require("rest-nvim")
+	return rest
+end)
+if not status_ok then
+	return
+end
 
 rest.setup({
 	-- Open request results in a horizontal split

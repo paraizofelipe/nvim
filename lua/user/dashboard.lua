@@ -1,5 +1,7 @@
-local home = os.getenv("HOME")
-local db = require("dashboard")
+local status_ok, db = pcall(require, "dashboard")
+if not status_ok then
+	return
+end
 -- linux
 -- db.preview_command = "ueberzug"
 

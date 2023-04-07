@@ -23,6 +23,6 @@ require("neotest").setup({
 })
 
 vim.fn.sign_define("neotest_running", { text = "", texthl = "CursorLineNr", linehl = "", numhl = "" })
-vim.fn.sign_define("neotest_skipped", { text = "", texthl = "CursorLineNr", linehl = "", numhl = "" })
+vim.fn.sign_define("neotest_skipped", { text = "", texthl = "CursorLineNr", linehl = "", numhl = "" })
 vim.fn.sign_define("neotest_passed", { text = "", texthl = "CocHintSign", linehl = "", numhl = "" })
-vim.fn.sign_define("neotest_failed", { text = "", texthl = "CocErrorSign", linehl = "", numhl = "" })
+vim.fn.sign_define("neotest_failed", { text = "", texthl = "CocErrorSign", linehl = "", numhl = "" })
