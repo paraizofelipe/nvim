@@ -7,10 +7,7 @@ if not status_ok then
 	return
 end
 
-vim.fn.sign_define(
-	"DapBreakpoint",
-	{ text = "", texthl = "CocErrorSign", linehl = "DiffviewDiffAddAsDelete", numhl = "" }
-)
+vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "CocErrorSign", linehl = "DiffDelete", numhl = "" })
 vim.fn.sign_define("DapStopped", { text = "", texthl = "CursorLineNr", linehl = "DiffAdd", numhl = "" })
 
 dap.adapters.go = function(callback, config)
