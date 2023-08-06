@@ -1,24 +1,30 @@
-require("neotest").setup({
+local status_ok, neotest, neotest_python, neotest_go = pcall(function()
+	neotest = require("neotest")
+	neotest_python = require("neotest-python")
+	neotest_go = require("neotest-go")
+	return neotest, neotest_python, neotest_go
+end)
+if not status_ok then
+	return
+end
+
+neotest.setup({
 	quickfix = {
 		enabled = false,
 		open = false,
 	},
 	adapters = {
-		require("neotest-python")({
+		neotest_python({
 			dap = { justMyCode = false },
 			args = { "--log-level", "DEBUG" },
 			runner = "pytest",
 		}),
-		require("neotest-go")({
+		neotest_go({
 			experimental = {
 				test_table = true,
 			},
 			args = { "-count=1", "-timeout=60s" },
 		}),
-		-- require("neotest-plenary"),
-		-- require("neotest-vim-test")({
-		-- 	ignore_file_types = { "vim", "lua" },
-		-- }),
 	},
 })
 

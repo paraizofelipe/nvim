@@ -22,6 +22,14 @@ parser_configs.norg_table = {
 	},
 }
 
+parser_configs.hurl = {
+	install_info = {
+		url = "https://github.com/pfeiferj/tree-sitter-hurl",
+		files = { "src/parser.c" },
+		branch = "main",
+	},
+}
+
 configs.setup({
 	ensure_installed = { "norg", "norg_meta", "norg_table", "javascript", "yaml", "markdown", "python", "go", "lua" },
 	sync_install = false,

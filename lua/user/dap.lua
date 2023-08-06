@@ -9,6 +9,10 @@ end
 
 vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "CocErrorSign", linehl = "DiffDelete", numhl = "" })
 vim.fn.sign_define("DapStopped", { text = "", texthl = "CursorLineNr", linehl = "DiffAdd", numhl = "" })
+vim.fn.sign_define(
+	"DapBreakpointRejected",
+	{ text = "", texthl = "CocErrorSign", linehl = "DiffDelete", numhl = "" }
+)
 
 dap.adapters.go = function(callback, config)
 	local stdout = vim.loop.new_pipe(false)
