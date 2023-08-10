@@ -6,7 +6,7 @@ M.bg = "#282828"
 M.fg = "#fbf1c7"
 M.day_brightness = 0.3
 
--- vim.cmd("hi EndOfBuffer guifg=bg")
+vim.api.nvim_set_hl(0, "EndOfBuffer", { link = "GruvboxBg0" })
 
 local function darkenColor(color, percentage)
 	local bgColor = M.bg

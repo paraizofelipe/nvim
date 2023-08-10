@@ -1,7 +1,8 @@
 require("neorg").setup({
 	load = {
 		["core.defaults"] = {},
-		["core.norg.dirman"] = {
+		["core.integrations.telescope"] = {},
+		["core.dirman"] = {
 			config = {
 				workspaces = {
 					work = "~/notes/work",
@@ -9,10 +10,13 @@ require("neorg").setup({
 				},
 			},
 		},
-		["core.norg.concealer"] = {
-			config = { -- Note that this table is optional and doesn't need to be provided
-				-- Configuration hereby
+		["core.integrations.treesitter"] = {},
+		["core.completion"] = {
+			config = {
+				engine = "nvim-cmp",
+				name = "[Neorg]",
 			},
 		},
+		["core.concealer"] = {},
 	},
 })

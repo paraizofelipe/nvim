@@ -53,11 +53,13 @@ return packer.startup(function(use)
 	use("nvim-lua/popup.nvim")
 	use("windwp/nvim-autopairs")
 	use("numToStr/Comment.nvim")
-	use("ryanoasis/vim-devicons")
-	use("kyazdani42/nvim-web-devicons")
+	-- use("ryanoasis/vim-devicons")
+	-- use("kyazdani42/nvim-web-devicons")
 	use("kyazdani42/nvim-tree.lua")
+	use("nvim-tree/nvim-web-devicons")
 	-- use("jose-elias-alvarez/buftabline.nvim") -- Deprecated
-	use("akinsho/bufferline.nvim")
+	-- use("akinsho/bufferline.nvim")
+	use("romgrk/barbar.nvim")
 	use("moll/vim-bbye")
 	use("nvim-lualine/lualine.nvim")
 	use("ahmedkhalf/project.nvim")
@@ -93,8 +95,14 @@ return packer.startup(function(use)
 	use("sindrets/diffview.nvim")
 	-- use("jedrzejboczar/possession.nvim")
 	use("folke/persistence.nvim")
-	use("SmiteshP/nvim-navic")
+	-- use("SmiteshP/nvim-navic")
 	use("MunifTanjim/nui.nvim")
+	-- use({
+	-- 	"nvim-neorg/neorg",
+	-- 	tag = "v3.2.2",
+	-- 	requires = { "nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope" },
+	-- 	run = ":Neorg sync-parsers",
+	-- })
 
 	-- Debug
 	use("mfussenegger/nvim-dap")
@@ -122,6 +130,14 @@ return packer.startup(function(use)
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
 	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
+
+	-- use({
+	-- 	"williamboman/mason.nvim",
+	-- 	requires = {
+	-- 		"williamboman/mason-lspconfig.nvim",
+	-- 		"neovim/nvim-lspconfig",
+	-- 	},
+	-- })
 
 	-- LSP
 	use("neovim/nvim-lspconfig") -- enable LSP

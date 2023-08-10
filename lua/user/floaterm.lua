@@ -5,7 +5,7 @@ vim.g.floaterm_keymap_new = "<F4>"
 
 -- Floaterm
 vim.g.floaterm_gitcommit = "floaterm"
-vim.g.floaterm_autoinsert = 1
+-- vim.g.floaterm_autoinsert = 1
 vim.g.floaterm_width = 0.4
 vim.g.floaterm_height = 0.3
 vim.g.floaterm_wintitle = 0
