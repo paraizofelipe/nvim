@@ -108,6 +108,7 @@ return packer.startup(function(use)
 	use("mfussenegger/nvim-dap")
 	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 	use("theHamsta/nvim-dap-virtual-text")
+	use("mfussenegger/nvim-dap-python")
 
 	-- Colorschemes
 	-- use("morhetz/gruvbox")
@@ -141,8 +142,10 @@ return packer.startup(function(use)
 
 	-- LSP
 	use("neovim/nvim-lspconfig") -- enable LSP
-	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
-	use("jose-elias-alvarez/null-ls.nvim")
+	use({ "williamboman/mason.nvim" })
+	use({ "williamboman/mason-lspconfig.nvim" })
+	-- use("jose-elias-alvarez/null-ls.nvim")
+	use({ "mhartington/formatter.nvim" })
 	use("folke/trouble.nvim")
 
 	-- Telescope

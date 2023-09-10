@@ -1,7 +1,3 @@
--- local status_ok, _ = pcall(require, "lspconfig")
--- if not status_ok then return end
-
-require("user.lsp.lsp-installer")
-require("user.lsp.handlers").setup()
--- require "user.lsp.efm-ls"
-require("user.lsp.null-ls")
+require("user.mason")
+require("user.lsp.mason-lspconfig")
+require("user.lsp.formatter")

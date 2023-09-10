@@ -49,7 +49,7 @@ end
 dap.configurations.go = {
 	{
 		type = "go",
-		name = "Debug",
+		name = "Current File",
 		request = "launch",
 		program = "${file}",
 	},
@@ -71,7 +71,8 @@ dap.configurations.go = {
 
 dap.adapters.python = {
 	type = "executable",
-	command = "/home/paraizo/.pyenv/versions/debug/bin/python",
+	command = "/home/paraizo/.local/share/nvimmason/packages/debugpy/venv/bin/python",
+	-- command = "/home/paraizo/.pyenv/versions/debug/bin/python",
 	args = { "-m", "debugpy.adapter" },
 }
 
@@ -104,14 +105,7 @@ dapui.setup({
 		repl = "r",
 		toggle = "t",
 	},
-	-- Expand lines larger than the window
-	-- Requires >= 0.7
 	expand_lines = vim.fn.has("nvim-0.7"),
-	-- Layouts define sections of the screen to place windows.
-	-- The position can be "left", "right", "top" or "bottom".
-	-- The size specifies the height/width depending on position.
-	-- Elements are the elements shown in the layout (in order).
-	-- Layouts are opened in order so that earlier layouts take priority in window sizing.
 	layouts = {
 		{
 			elements = {
