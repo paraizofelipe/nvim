@@ -114,9 +114,11 @@ return packer.startup(function(use)
 	-- use("morhetz/gruvbox")
 	use("ellisonleao/gruvbox.nvim")
 
+	-- Codeium
+	-- use("Exafunction/codeium.vim")
 	-- Copilot
 	-- use("github/copilot.vim")
-	-- use("zbirenbaum/copilot.lua")
+	use("zbirenbaum/copilot.lua")
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin

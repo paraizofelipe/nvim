@@ -6,7 +6,7 @@ if not status_ok then
 	return
 end
 
-vim.cmd([[highlight CopilotSuggestion guifg=#5555555 ctermfg=8]])
+vim.cmd([[highlight CopilotSuggestion guifg=#827467 ctermfg=8]])
 
 copilot.setup({
 	panel = {
@@ -26,19 +26,19 @@ copilot.setup({
 	},
 	suggestion = {
 		enabled = true,
-		auto_trigger = false,
+		auto_trigger = true,
 		debounce = 75,
 		keymap = {
-			accept = "<M-l>",
+			accept = "<C-g>",
 			accept_word = false,
 			accept_line = false,
 			next = "<M-]>",
 			prev = "<M-[>",
-			dismiss = "<C-]>",
+			dismiss = "<C-]",
 		},
 	},
 	filetypes = {
-		yaml = false,
+		yaml = true,
 		markdown = false,
 		help = false,
 		gitcommit = false,

@@ -16,15 +16,15 @@ formatter.setup({
 		},
 		python = {
 			-- require("formatter.filetypes.python").black,
-			-- require("formatter.filetypes.python").isort,
-			function()
-				return {
-					exe = "isort",
-					ignore_exitcode = true,
-					args = { "-q", "-" },
-					stdin = false,
-				}
-			end,
+			require("formatter.filetypes.python").isort,
+			-- function()
+			--     return {
+			--         exe = "isort",
+			--         ignore_exitcode = true,
+			--         args = { "-q", "-" },
+			--         stdin = false,
+			--     }
+			-- end,
 			function()
 				return {
 					exe = "blue",

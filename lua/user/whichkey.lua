@@ -211,7 +211,7 @@ local mappings = {
 	a = {
 		name = "Applications",
 		t = { "<cmd>FloatermNew<cr>", "Terminal" },
-		p = { "<cmd>FloatermNew ipython<cr>", "Python" },
+		p = { "<cmd>FloatermNew ipython3<cr>", "Python" },
 		n = { "<cmd>FloatermNew node<cr>", "Node" },
 		d = { "<cmd>FloatermNew --wintype=float --width=0.8 --height=0.8 lazydocker<cr>", "Docker" },
 		g = { "<cmd>FloatermNew --wintype=float --width=0.8 --height=0.8 lazygit<cr>", "Git" },

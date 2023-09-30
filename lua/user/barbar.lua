@@ -51,11 +51,11 @@ barbar.setup({
 			[vim.diagnostic.severity.INFO] = { enabled = false },
 			[vim.diagnostic.severity.HINT] = { enabled = false },
 		},
-		gitsigns = {
-			added = { enabled = true, icon = "+" },
-			changed = { enabled = true, icon = "~" },
-			deleted = { enabled = true, icon = "-" },
-		},
+		-- gitsigns = {
+		-- 	added = { enabled = true, icon = "+" },
+		-- 	changed = { enabled = true, icon = "~" },
+		-- 	deleted = { enabled = true, icon = "-" },
+		-- },
 		filetype = {
 			-- Sets the icon's highlight group.
 			-- If false, will use nvim-web-devicons colors
