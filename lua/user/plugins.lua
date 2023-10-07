@@ -58,8 +58,8 @@ return packer.startup(function(use)
 	use("kyazdani42/nvim-tree.lua")
 	use("nvim-tree/nvim-web-devicons")
 	-- use("jose-elias-alvarez/buftabline.nvim") -- Deprecated
-	-- use("akinsho/bufferline.nvim")
-	use("romgrk/barbar.nvim")
+	use("akinsho/bufferline.nvim")
+	-- use("romgrk/barbar.nvim")
 	use("moll/vim-bbye")
 	use("nvim-lualine/lualine.nvim")
 	use("ahmedkhalf/project.nvim")
@@ -77,7 +77,7 @@ return packer.startup(function(use)
 	use("direnv/direnv.vim")
 	use("RRethy/vim-illuminate")
 	-- use("klen/nvim-test")
-	use("rest-nvim/rest.nvim")
+	-- use("rest-nvim/rest.nvim")
 	use({
 		"nvim-neotest/neotest",
 		requires = {
@@ -146,6 +146,7 @@ return packer.startup(function(use)
 	use("neovim/nvim-lspconfig") -- enable LSP
 	use({ "williamboman/mason.nvim" })
 	use({ "williamboman/mason-lspconfig.nvim" })
+	use("mfussenegger/nvim-lint")
 	-- use("jose-elias-alvarez/null-ls.nvim")
 	use({ "mhartington/formatter.nvim" })
 	use("folke/trouble.nvim")

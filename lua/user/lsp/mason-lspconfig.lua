@@ -117,6 +117,11 @@ local handlers = {
 	["docker_compose_language_service"] = function()
 		lspconfig.docker_compose_language_service.setup({})
 	end,
+	["ruff_lsp"] = function()
+		lspconfig.ruff_lsp.setup({
+			config = "~/.config/.ruff.toml",
+		})
+	end,
 }
 
 mason_lspconfig.setup({

@@ -6,11 +6,29 @@ end
 bufferline.setup({
 	on_config_done = nil,
 	highlights = {
-		background = {
-			italic = true,
-		},
-		buffer_selected = {
+		warning_selected = {
 			bold = true,
+			italic = false,
+		},
+		warning_visible = {
+			fg = "#ebdbb2",
+			bg = "#282828",
+			bold = true,
+			italic = false,
+		},
+		error_selected = {
+			bold = true,
+			italic = false,
+		},
+		error_visible = {
+			fg = "#ebdbb2",
+			bg = "#282828",
+			bold = true,
+			italic = false,
+		},
+		separator = {
+			fg = "#458588",
+			-- bg = "#b16286",
 		},
 	},
 	options = {
@@ -19,7 +37,7 @@ bufferline.setup({
 			normal_mode = {},
 		},
 		mode = "buffers",
-		numbers = "none",
+		numbers = "ordinal",
 		close_command = function(bufnr)
 			M.buf_kill("bd", bufnr, false)
 		end,
@@ -39,6 +57,7 @@ bufferline.setup({
 		truncate_names = true,
 		tab_size = 18,
 		diagnostics = "nvim_lsp",
+		-- diagnostics = false,
 		diagnostics_update_in_insert = false,
 		diagnostics_indicator = diagnostics_indicator,
 		custom_filter = custom_filter,
@@ -75,6 +94,7 @@ bufferline.setup({
 		},
 		color_icons = true,
 		show_close_icon = false,
+		show_buffer_close_icons = false,
 		show_tab_indicators = true,
 		persist_buffer_sort = true,
 		separator_style = "thin",
