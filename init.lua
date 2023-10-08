@@ -1,7 +1,11 @@
+-- Default settings
+require("user.options")
+
+-- Load plugins
 require("user.plugins")
 
+-- Load plugins configuration
 require("user.colorscheme")
-require("user.options")
 require("user.cmp")
 require("user.lsp")
 require("user.nvim-lint")
@@ -23,8 +27,6 @@ require("user.vim-fugitive")
 require("user.autocommands")
 require("user.persistence")
 require("user.alpha")
--- require("user.rest")
--- require("user.navic")
 require("user.bufferline")
 require("user.whichkey")
 require("user.keymaps")
@@ -33,7 +35,9 @@ require("user.dap")
 require("user.vimwiki")
 require("user.copilot")
 
--- Testing
+-- Testing plugins
+-- require("user.rest")
+-- require("user.navic")
 -- require("user.mason")
 -- require("user.mergetool")
 -- require("user.nvim-test")
@@ -45,6 +49,6 @@ require("user.copilot")
 -- require("user.ultest")
 -- require("user.toggleterm")
 
--- Deprecated
+-- Deprecated plugins
 -- require("user.barbar")
 -- require("user.buftabline")

@@ -1,173 +1,130 @@
-local fn = vim.fn
-
--- Automatically install packer
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-	PACKER_BOOTSTRAP = fn.system({
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
 		"git",
 		"clone",
-		"--depth",
-		"1",
-		"https://github.com/wbthomason/packer.nvim",
-		install_path,
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
 	})
-	print("Installing packer close and reopen Neovim...")
-	vim.cmd([[packadd packer.nvim]])
 end
+vim.opt.rtp:prepend(lazypath)
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])
-
--- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-	return
-end
-
--- Have packer use a popup window
-packer.init({
-	lockfile = true,
-	display = {
-		open_fn = function()
-			return require("packer.util").float({ border = "rounded" })
-		end,
-	},
-})
-
--- Install your plugins here
-return packer.startup(function(use)
-	-- My plugins
-	-- use("paraizofelipe/translator.nvim")
-	-- use("~/projects/good-night.nvim")
-	-- use("~/projects/orgpp.nvim")
-	use({ "michaelb/sniprun", run = "bash ./install.sh" })
-
-	-- General
-	use("nvim-lua/plenary.nvim")
-	use("wbthomason/packer.nvim")
-	use("nvim-lua/popup.nvim")
-	use("windwp/nvim-autopairs")
-	use("numToStr/Comment.nvim")
-	-- use("ryanoasis/vim-devicons")
-	-- use("kyazdani42/nvim-web-devicons")
-	use("kyazdani42/nvim-tree.lua")
-	use("nvim-tree/nvim-web-devicons")
-	-- use("jose-elias-alvarez/buftabline.nvim") -- Deprecated
-	use("akinsho/bufferline.nvim")
-	-- use("romgrk/barbar.nvim")
-	use("moll/vim-bbye")
-	use("nvim-lualine/lualine.nvim")
-	use("ahmedkhalf/project.nvim")
-	use("lewis6991/impatient.nvim")
-	use("lukas-reineke/indent-blankline.nvim")
-	use("goolord/alpha-nvim")
-	-- use("antoinemadec/FixCursorHold.nvim")
-	use("folke/which-key.nvim")
-	use("mg979/vim-visual-multi")
-	-- use("samoshkin/vim-mergetool")
-	use("tpope/vim-fugitive")
-	use("voldikss/vim-floaterm")
-	use("mgedmin/coverage-highlight.vim")
-	-- use("vimwiki/vimwiki")
-	use("direnv/direnv.vim")
-	use("RRethy/vim-illuminate")
-	-- use("klen/nvim-test")
-	-- use("rest-nvim/rest.nvim")
-	use({
-		"nvim-neotest/neotest",
-		requires = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-			"antoinemadec/FixCursorHold.nvim",
-			-- "nvim-neotest/neotest-vim-test",
-			-- "nvim-neotest/neotest-plenary",
-			"nvim-neotest/neotest-go",
-			"nvim-neotest/neotest-python",
-		},
-	})
-	-- use("simrat39/symbols-outline.nvim")
-	use("rhysd/clever-f.vim") -- vimscript
-	use("sindrets/diffview.nvim")
-	-- use("jedrzejboczar/possession.nvim")
-	use("folke/persistence.nvim")
-	-- use("SmiteshP/nvim-navic")
-	use("MunifTanjim/nui.nvim")
-	-- use({
-	-- 	"nvim-neorg/neorg",
-	-- 	tag = "v3.2.2",
-	-- 	requires = { "nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope" },
-	-- 	run = ":Neorg sync-parsers",
-	-- })
-
-	-- Debug
-	use("mfussenegger/nvim-dap")
-	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
-	use("theHamsta/nvim-dap-virtual-text")
-	use("mfussenegger/nvim-dap-python")
-
+local plugins = {
 	-- Colorschemes
-	-- use("morhetz/gruvbox")
-	use("ellisonleao/gruvbox.nvim")
-
-	-- Codeium
-	-- use("Exafunction/codeium.vim")
-	-- Copilot
-	-- use("github/copilot.vim")
-	use("zbirenbaum/copilot.lua")
-
-	-- cmp plugins
-	use("hrsh7th/nvim-cmp") -- The completion plugin
-	use("hrsh7th/cmp-buffer") -- buffer completions
-	use("hrsh7th/cmp-path") -- path completions
-	use("hrsh7th/cmp-cmdline") -- cmdline completions
-	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-nvim-lua")
-	use("saadparwaiz1/cmp_luasnip") -- snippet completions
-	-- use("mhinz/vim-startify")
-
-	-- snippets
-	use("L3MON4D3/LuaSnip") --snippet engine
-	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
-
-	-- use({
-	-- 	"williamboman/mason.nvim",
-	-- 	requires = {
-	-- 		"williamboman/mason-lspconfig.nvim",
-	-- 		"neovim/nvim-lspconfig",
-	-- 	},
-	-- })
-
-	-- LSP
-	use("neovim/nvim-lspconfig") -- enable LSP
-	use({ "williamboman/mason.nvim" })
-	use({ "williamboman/mason-lspconfig.nvim" })
-	use("mfussenegger/nvim-lint")
-	-- use("jose-elias-alvarez/null-ls.nvim")
-	use({ "mhartington/formatter.nvim" })
-	use("folke/trouble.nvim")
-
-	-- Telescope
-	use("nvim-telescope/telescope.nvim")
-	use("nvim-telescope/telescope-media-files.nvim")
-
-	-- Treesitter
-	use({
-		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate",
-	})
-	-- use "p00f/nvim-ts-rainbow"
-	-- use "nvim-treesitter/playground"
-	use("JoosepAlviste/nvim-ts-context-commentstring")
+	{ "ellisonleao/gruvbox.nvim", lazy = true, priority = 1000, tag = "2.0.0" },
 
 	-- Git
-	use("lewis6991/gitsigns.nvim")
+	{ "lewis6991/gitsigns.nvim", lazy = true, tag = "v0.6" },
+	{ "tpope/vim-fugitive", lazy = true, cmd = { "Git" } },
 
-	if PACKER_BOOTSTRAP then
-		require("packer").sync()
-	end
-end)
+	{ "nvim-lua/plenary.nvim", lazy = true },
+	{ "windwp/nvim-autopairs", lazy = true },
+	{ "numToStr/Comment.nvim", lazy = true },
+	-- {"ryanoasis/vim-devicons", lazy = true},
+	-- {"kyazdani42/nvim-web-devicons", lazy = true},
+	{ "kyazdani42/nvim-tree.lua", lazy = true },
+	{ "nvim-tree/nvim-web-devicons", lazy = true },
+	-- {"jose-elias-alvarez/buftabline.nvim") -- Deprecated.lazy,
+	{ "akinsho/bufferline.nvim", lazy = true },
+	-- {"romgrk/barbar.nvim", lazy = true},
+	{ "moll/vim-bbye", lazy = true, cmd = "Bdelete" },
+	{ "nvim-lualine/lualine.nvim", lazy = true },
+	{ "ahmedkhalf/project.nvim", lazy = true },
+	{ "lewis6991/impatient.nvim", lazy = true },
+	{ "lukas-reineke/indent-blankline.nvim", lazy = true },
+	{ "goolord/alpha-nvim", lazy = true },
+	{ "folke/which-key.nvim", lazy = true },
+	{
+		"mg979/vim-visual-multi",
+		lazy = true,
+		keys = {
+			{ "<C-n>", mode = "n" },
+			{ "<C-Up>", mode = "n" },
+			{ "<C-Down>", mode = "n" },
+			{ "<C-n>", mode = "v" },
+		},
+	},
+	-- {"samoshkin/vim-mergetool", lazy = true},
+	{ "voldikss/vim-floaterm", lazy = false },
+	{ "mgedmin/coverage-highlight.vim", lazy = true },
+	-- {"vimwiki/vimwiki", lazy = true},
+	{ "direnv/direnv.vim", lazy = false },
+	{ "RRethy/vim-illuminate", lazy = false },
+
+	-- {"klen/nvim-test", lazy = true},
+	-- {"rest-nvim/rest.nvim", lazy = true},
+	{ "nvim-neotest/neotest", lazy = true },
+	{ "nvim-neotest/neotest-go", lazy = true, ft = "go" },
+	{ "nvim-neotest/neotest-python", lazy = true, ft = "python" },
+	-- {"simrat39/symbols-outline.nvim", lazy = true},
+	{ "rhysd/clever-f.vim", lazy = false }, -- vimscript
+	-- { "ggandor/lightspeed.nvim", lazy = true },
+	{ "sindrets/diffview.nvim", lazy = true, cmd = "DiffviewOpen" },
+	-- {"jedrzejboczar/possession.nvim", lazy = true},
+	{ "folke/persistence.nvim", lazy = true },
+	-- {"SmiteshP/nvim-navic", lazy = true},
+	-- { "MunifTanjim/nui.nvim", lazy = true },
+
+	-- Debug
+	{ "mfussenegger/nvim-dap", keys = { "<leader>d", mode = "n" }, lazy = true },
+	{ "rcarriga/nvim-dap-ui", keys = { "<leader>d", mode = "n" }, lazy = true },
+	{ "theHamsta/nvim-dap-virtual-text", keys = { "<leader>d", mode = "n" }, lazy = true },
+	{ "mfussenegger/nvim-dap-python", keys = { "<leader>d", mode = "n" }, lazy = true, ft = "python" },
+	{ "nvim-telescope/telescope-dap.nvim", keys = { "<leader>d", mode = "n" }, lazy = true },
+
+	-- IA
+	-- {"Exafunction/codeium.vim", lazy = true},
+	-- {"github/copilot.vim", lazy = true},
+	{ "zbirenbaum/copilot.lua", lazy = true },
+
+	-- CMP plugins
+	{
+		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
+		dependencies = {
+			"hrsh7th/vim-vsnip",
+			"hrsh7th/cmp-buffer", -- buffer completions
+			"hrsh7th/cmp-path", -- path completions
+			"hrsh7th/cmp-cmdline", -- cmdline completions
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lua",
+			"hrsh7th/cmp-vsnip",
+			"hrsh7th/vim-vsnip",
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
+			"SirVer/ultisnips",
+			"quangnguyen30192/cmp-nvim-ultisnips",
+			"dcampos/nvim-snippy",
+			"dcampos/cmp-snippy",
+		},
+		lazy = true,
+	}, -- The completion plugin
+
+	-- Snippets
+	-- {"L3MON4D3/LuaSnip", lazy = true}, --snippet engine
+	-- { "rafamadriz/friendly-snippets", lazy = true }, -- a bunch of snippets to use
+
+	-- LSP
+	{ "neovim/nvim-lspconfig", lazy = true }, -- enable LSP
+	{ "williamboman/mason.nvim", lazy = true },
+	{ "williamboman/mason-lspconfig.nvim", lazy = true },
+	{ "mfussenegger/nvim-lint", lazy = true },
+	{ "mhartington/formatter.nvim", lazy = true },
+	{ "folke/trouble.nvim", lazy = true, cmd = "Trouble" },
+
+	-- Telescope
+	{ "nvim-telescope/telescope.nvim", lazy = true },
+	{ "nvim-telescope/telescope-media-files.nvim", lazy = true },
+
+	-- Treesitter
+	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", lazy = true },
+	-- use "p00f/nvim-ts-rainbow"
+
+	-- { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
+}
+
+local opts = {}
+
+require("lazy").setup(plugins, opts)

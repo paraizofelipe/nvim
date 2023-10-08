@@ -58,12 +58,31 @@ dashboard.section.buttons.val = {
 	button("q", "   Quit Neovim", ":qa<CR>"),
 }
 
-local function footer()
-	local author = "Author: Felipe Paraizo\nURL: http://paraizo.dev"
-	return author
-end
+-- dashboard.section.footer.val = footer()
+local v = vim.version()
+local version = " v" .. v.major .. "." .. v.minor .. "." .. v.patch
+local datetime = os.date(" %d-%m-%Y 󱑏 %H:%M:%S")
+local author = " : Felipe Paraizo"
+local url = " : http://paraizo.dev"
 
-dashboard.section.footer.val = footer()
+vim.api.nvim_create_autocmd("User", {
+	pattern = "LazyVimStarted",
+	callback = function()
+		local stats = require("lazy").stats()
+		local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+		dashboard.section.footer.val = {
+			"",
+			"",
+			version,
+			"",
+			"⚡Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms",
+			"",
+			author,
+			url,
+		}
+		pcall(vim.cmd.AlphaRedraw)
+	end,
+})
 
 dashboard.section.footer.opts.hl = "Operator"
 dashboard.section.header.opts.hl = "Type"

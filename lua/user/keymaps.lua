@@ -3,7 +3,8 @@ local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 
 -- Shorten function name
-local keymap = vim.api.nvim_set_keymap
+-- local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
@@ -32,12 +33,6 @@ keymap("n", "<C-y>", "4<C-y>", opts)
 
 -- Nvimtree
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
-
--- Resize with arrows
-keymap("n", "<C-Up>", ":resize +2<CR>", opts)
-keymap("n", "<C-Down>", ":resize -2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
@@ -117,6 +112,17 @@ keymap("n", "<leader>6", "<Cmd>BufferLineGoToBuffer 6<CR>", opts)
 keymap("n", "<leader>7", "<Cmd>BufferLineGoToBuffer 7<CR>", opts)
 keymap("n", "<leader>8", "<Cmd>BufferLineGoToBuffer 8<CR>", opts)
 keymap("n", "<leader>9", "<Cmd>BufferLineGoToBuffer 9<CR>", opts)
+
+-- Floaterm
+keymap("n", "<F1>", "<Cmd>FloatermToggle<CR>", opts)
+keymap("t", "<F1>", "<C-\\><C-n>:FloatermToggle<CR>")
+keymap("n", "<F2>", "<Cmd>FloatermNext<CR>", opts)
+keymap("t", "<F2>", "<C-\\><C-n><Cmd>FloatermNext<CR>", opts)
+keymap("n", "<F3>", "<Cmd>FloatermPrev<CR>", opts)
+keymap("t", "<F3>", "<C-\\><C-n><Cmd>FloatermPrev<CR>", opts)
+keymap("n", "<F4>", "<Cmd>FloatermNew<CR>", opts)
+keymap("t", "<F4>", "<C-\\><C-n><Cmd>FloatermNew<CR>", opts)
+keymap("t", "<Esc><Esc>", "<C-\\><C-n>", opts)
 
 vim.keymap.set("i", "<C-g>", function()
 	return vim.fn["codeium#Accept"]()
