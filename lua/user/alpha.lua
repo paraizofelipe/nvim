@@ -73,12 +73,12 @@ vim.api.nvim_create_autocmd("User", {
 		dashboard.section.footer.val = {
 			"",
 			"",
-			version,
+			author,
+			url,
 			"",
 			"⚡Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms",
 			"",
-			author,
-			url,
+			version,
 		}
 		pcall(vim.cmd.AlphaRedraw)
 	end,

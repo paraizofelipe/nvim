@@ -123,6 +123,8 @@ local plugins = {
 	-- use "p00f/nvim-ts-rainbow"
 
 	-- { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
+
+	require("user.nvim-window-picker").lazy,
 }
 
 local opts = {}
