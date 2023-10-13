@@ -227,12 +227,12 @@ local function load_config()
 			l = { "<cmd>MergetoolPreferLocal<cr>", "MergetoolPreferLocal" },
 			r = { "<cmd>MergetoolPreferRemote<cr>", "MergetoolPreferRemote" },
 		},
-		q = {
-			name = "Sessions",
-			d = { "<cmd>lua require('persistence').load()<cr>", "Session of directory" },
-			l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Last session" },
-			s = { "<cmd>lua require('persistence').stop()<cr>", "Stop save session" },
-		},
+		-- q = {
+		-- 	name = "Sessions",
+		-- 	d = { "<cmd>lua require('persistence').load()<cr>", "Session of directory" },
+		-- 	l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Last session" },
+		-- 	s = { "<cmd>lua require('persistence').stop()<cr>", "Stop save session" },
+		-- },
 	}
 
 	local vopts = {

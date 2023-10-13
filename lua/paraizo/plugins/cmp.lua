@@ -60,10 +60,16 @@ local function load_config()
 			}),
 		},
 		formatting = {
-			-- fields = { "kind", "abbr", "menu" },
 			format = lspkind.cmp_format({
 				with_text = true,
 				maxwidth = 50,
+				menu = {
+					nvim_lsp = "[LSP]",
+					nvim_lua = "[Lua]",
+					luasnip = "[LuaSnip]",
+					buffer = "[Buffer]",
+					path = "[Path]",
+				},
 			}),
 		},
 		sources = {
@@ -78,9 +84,8 @@ local function load_config()
 			select = false,
 		},
 		window = {
-			documentation = {
-				border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-			},
+			completion = cmp.config.window.bordered(),
+			documentation = cmp.config.window.bordered(),
 		},
 		experimental = {
 			ghost_text = false,

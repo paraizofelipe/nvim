@@ -14,19 +14,20 @@ local function load_config()
 	}
 
 	dashboard.section.buttons.val = {
-		dashboard.button("s", "   Load last session", ":lua require('persistence').load({ last = true })<CR>"),
-		dashboard.button("f", "   Find file", ":Telescope find_files <CR>"),
+		dashboard.button("l", "   Load last session", ":SessionRestore<CR>"),
+		dashboard.button("s", "󰺅   Search session", ":Telescope session-lens search_session<CR>"),
+		dashboard.button("f", "󰈞   Find file", ":Telescope find_files <CR>"),
 		dashboard.button("e", "   New file", ":ene <BAR> startinsert <CR>"),
 		dashboard.button("p", "   Find project", ":Telescope projects <CR>"),
-		dashboard.button("r", "   Recently used files", ":Telescope oldfiles <CR>"),
-		dashboard.button("t", "   Find text", ":Telescope live_grep <CR>"),
+		dashboard.button("r", "󱫓   Recently used files", ":Telescope oldfiles <CR>"),
+		dashboard.button("t", "󰊄 Find text", ":Telescope live_grep <CR>"),
 		dashboard.button(
 			"t",
 			"   Show containers",
 			":FloatermNew --wintype=float --width=0.8 --height=0.8 lazydocker <CR>"
 		),
 		dashboard.button("c", "   Configuration", ":e ~/.config/nvim/init.lua <CR>"),
-		dashboard.button("q", "   Quit Neovim", ":qa<CR>"),
+		dashboard.button("q", "󰜺  Quit Neovim", ":qa<CR>"),
 	}
 
 	local v = vim.version()
