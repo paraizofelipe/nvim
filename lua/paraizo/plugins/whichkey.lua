@@ -90,7 +90,7 @@ local function load_config()
 		["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
 		b = {
 			name = "+buffers",
-			d = { "<cmd>Bdelete!<CR>", "Delete Buffer" },
+			d = { "<cmd>BufDel!<CR>", "Delete Buffer" },
 			c = { "<cmd>bwipeout<cr>", "Close buffers" },
 			j = { "<cmd>BufferLinePick<cr>", "Jump" },
 			l = {

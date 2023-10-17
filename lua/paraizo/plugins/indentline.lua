@@ -1,6 +1,6 @@
 M = {}
 
-function load_config()
+local function load_config()
 	local indent_blankline = require("ibl")
 
 	vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }

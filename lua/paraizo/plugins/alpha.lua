@@ -20,7 +20,7 @@ local function load_config()
 		dashboard.button("e", "   New file", ":ene <BAR> startinsert <CR>"),
 		dashboard.button("p", "   Find project", ":Telescope projects <CR>"),
 		dashboard.button("r", "󱫓   Recently used files", ":Telescope oldfiles <CR>"),
-		dashboard.button("t", "󰊄 Find text", ":Telescope live_grep <CR>"),
+		dashboard.button("t", "󰊄   Find text", ":Telescope live_grep <CR>"),
 		dashboard.button(
 			"t",
 			"   Show containers",
@@ -31,9 +31,9 @@ local function load_config()
 	}
 
 	local v = vim.version()
-	local version = " v" .. v.major .. "." .. v.minor .. "." .. v.patch
-	local author = " : Felipe Paraizo"
-	local url = " : http://paraizo.dev"
+	local version = "v" .. v.major .. "." .. v.minor .. "." .. v.patch
+	local author = "Felipe Paraizo"
+	local url = "http://paraizo.dev"
 
 	vim.api.nvim_create_autocmd("User", {
 		pattern = "LazyVimStarted",
