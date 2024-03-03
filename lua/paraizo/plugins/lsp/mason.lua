@@ -27,6 +27,7 @@ local function load_config()
 			"lua_ls",
 			"jsonls",
 			"pyright",
+			"vale_ls",
 		},
 		-- auto-install configured servers (with lspconfig)
 		automatic_installation = true, -- not the same as ensure_installed
@@ -39,6 +40,9 @@ local function load_config()
 			"blue", -- python formatter
 			"mypy", -- python linter
 			"goimports", -- go formatter
+			"vale",
+			"hadolint",
+			"jsonlint",
 		},
 	})
 end

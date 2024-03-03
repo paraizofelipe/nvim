@@ -183,7 +183,6 @@ local function load_config()
 		s = {
 			name = "Search",
 			b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-			c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
 			h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
 			M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
 			r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
@@ -191,11 +190,12 @@ local function load_config()
 			k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 			C = { "<cmd>Telescope commands<cr>", "Commands" },
 			t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
-			f = { "<cmd>Telescope find_files<cr>", "Find files" },
-			s = {
-				"<cmd>Telescope possession list<cr>",
-				"Load session with telescope",
-			},
+			-- f = { "<cmd>Telescope find_files<cr>", "Find files" },
+			f = { "<cmd>ShowWorkspaceSymbol function<cr>", "Find functions in workspace" },
+			m = { "<cmd>ShowWorkspaceSymbol method<cr>", "Find methods in workspace" },
+			c = { "<cmd>ShowWorkspaceSymbol class<cr>", "Find class in workspace" },
+			C = { "<cmd>ShowWorkspaceSymbol constant<cr>", "Find constants in workspace" },
+			s = { "<cmd>ShowWorkspaceSymbol struct<cr>", "Find struct in workspace" },
 			-- s = {
 			-- 	"<cmd>Telescope telescope_session<cr>",
 			-- 	"Load session with telescope",

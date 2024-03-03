@@ -104,12 +104,13 @@ M.lazy = {
 		"hrsh7th/cmp-nvim-lua",
 		"hrsh7th/cmp-vsnip",
 		"hrsh7th/vim-vsnip",
-		"L3MON4D3/LuaSnip",
+		{ "L3MON4D3/LuaSnip", tag = "v2.1.1" },
 		"dcampos/nvim-snippy",
 		"dcampos/cmp-snippy",
 		"onsails/lspkind.nvim",
 	},
 	lazy = true,
+	tag = "v0.0.1",
 	config = load_config,
 }
 

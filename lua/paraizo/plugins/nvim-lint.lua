@@ -4,7 +4,8 @@ local function load_config()
 	local lint = require("lint")
 
 	lint.linters_by_ft = {
-		python = { "mypy" },
+		-- python = { "mypy" },
+		markdown = { "vale" },
 	}
 
 	local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

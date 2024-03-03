@@ -30,6 +30,8 @@ local function load_config()
 		keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
 	end
 
+	vim.lsp.set_log_level("debug")
+
 	local capabilities = cmp_nvim_lsp.default_capabilities()
 
 	local config = {
@@ -106,6 +108,32 @@ local function load_config()
 		settings = jsonls_opts.settings,
 		setup = jsonls_opts.setup,
 	})
+
+	lspconfig.clangd.setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+		cmd = {
+			"/home/paraizo/projects/esp-clang/bin/clangd",
+			"--background-index",
+			"--offset-encoding=utf-16",
+			"--query-driver=/home/paraizo/.platformio/packages/toolchain-xtensa-esp32s3/bin/xtensa-esp32s3-elf-*",
+		},
+		filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+	})
+
+	-- lspconfig.ccls.setup({
+	-- 	capabilities = capabilities,
+	-- 	on_attach = on_attach,
+	-- 	cmd = {
+	-- 		"ccls",
+	-- 	},
+	-- 	filetypes = {
+	-- 		"c",
+	-- 		"cpp",
+	-- 		"h",
+	-- 		"hpp",
+	-- 	},
+	-- })
 end
 
 M.lazy = {

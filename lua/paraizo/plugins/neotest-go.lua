@@ -3,6 +3,6 @@ return {
 	dependencies = {
 		"nvim-neotest/neotest",
 	},
-	lazy = true,
+	lazy = false,
 	ft = "go",
 }

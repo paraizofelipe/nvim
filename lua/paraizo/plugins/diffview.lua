@@ -5,14 +5,14 @@ local function load_config()
 	local actions = require("diffview.actions")
 
 	diffview.setup({
-		diff_binaries = false,
-		enhanced_diff_hl = true,
-		git_cmd = { "git" },
-		hg_cmd = { "hg" },
-		use_icons = true,
-		show_help_hints = true,
-		watch_index = true,
-		icons = {
+		diff_binaries = false, -- Show diffs for binaries
+		enhanced_diff_hl = false, -- See ':h diffview-config-enhanced_diff_hl'
+		git_cmd = { "git" }, -- The git executable followed by default args.
+		hg_cmd = { "hg" }, -- The hg executable followed by default args.
+		use_icons = true, -- Requires nvim-web-devicons
+		show_help_hints = true, -- Show hints for how to open the help panel
+		watch_index = true, -- Update views and index buffers when the git index changes.
+		icons = { -- Only applies when use_icons is true.
 			folder_closed = "",
 			folder_open = "",
 		},
@@ -22,38 +22,34 @@ local function load_config()
 			done = "✓",
 		},
 		view = {
-
 			default = {
-
 				layout = "diff2_horizontal",
 				winbar_info = false,
 			},
 			merge_tool = {
-
 				layout = "diff3_mixed",
 				disable_diagnostics = true,
 				winbar_info = true,
 			},
 			file_history = {
-
 				layout = "diff2_horizontal",
 				winbar_info = false,
 			},
 		},
 		file_panel = {
-			listing_style = "tree",
-			tree_options = {
-				flatten_dirs = true,
-				folder_statuses = "only_folded",
+			listing_style = "tree", -- One of 'list' or 'tree'
+			tree_options = { -- Only applies when listing_style is 'tree'
+				flatten_dirs = true, -- Flatten dirs that only contain one single dir
+				folder_statuses = "only_folded", -- One of 'never', 'only_folded' or 'always'.
 			},
-			win_config = {
+			win_config = { -- See ':h diffview-config-win_config'
 				position = "left",
 				width = 35,
 				win_opts = {},
 			},
 		},
 		file_history_panel = {
-			log_options = {
+			log_options = { -- See ':h diffview-config-log_options'
 				git = {
 					single_file = {
 						diff_merges = "combined",
@@ -67,39 +63,70 @@ local function load_config()
 					multi_file = {},
 				},
 			},
-			win_config = {
+			win_config = { -- See ':h diffview-config-win_config'
 				position = "bottom",
 				height = 16,
 				win_opts = {},
 			},
 		},
 		commit_log_panel = {
-			win_config = {
+			win_config = { -- See ':h diffview-config-win_config'
 				win_opts = {},
 			},
 		},
-		default_args = {
+		default_args = { -- Default args prepended to the arg-list for the listed commands
 			DiffviewOpen = {},
 			DiffviewFileHistory = {},
 		},
-		hooks = {},
+		hooks = {}, -- See ':h diffview-config-hooks'
 		keymaps = {
-			disable_defaults = false,
+			disable_defaults = false, -- Disable the default keymaps
 			view = {
-
-				{ "n", "<tab>", actions.select_next_entry, { desc = "Open the diff for the next file" } },
-				{ "n", "<s-tab>", actions.select_prev_entry, { desc = "Open the diff for the previous file" } },
+				-- The `view` bindings are active in the diff buffers, only when the current
+				-- tabpage is a Diffview.
+				{
+					"n",
+					"<tab>",
+					actions.select_next_entry,
+					{ desc = "Open the diff for the next file" },
+				},
+				{
+					"n",
+					"<s-tab>",
+					actions.select_prev_entry,
+					{ desc = "Open the diff for the previous file" },
+				},
 				{
 					"n",
 					"gf",
 					actions.goto_file_edit,
 					{ desc = "Open the file in the previous tabpage" },
 				},
-				{ "n", "<C-w><C-f>", actions.goto_file_split, { desc = "Open the file in a new split" } },
-				{ "n", "<C-w>gf", actions.goto_file_tab, { desc = "Open the file in a new tabpage" } },
-				{ "n", "<leader>e", actions.focus_files, { desc = "Bring focus to the file panel" } },
+				{
+					"n",
+					"<C-w><C-f>",
+					actions.goto_file_split,
+					{ desc = "Open the file in a new split" },
+				},
+				{
+					"n",
+					"<C-w>gf",
+					actions.goto_file_tab,
+					{ desc = "Open the file in a new tabpage" },
+				},
+				{
+					"n",
+					"<leader>e",
+					actions.focus_files,
+					{ desc = "Bring focus to the file panel" },
+				},
 				{ "n", "<leader>b", actions.toggle_files, { desc = "Toggle the file panel." } },
-				{ "n", "g<C-x>", actions.cycle_layout, { desc = "Cycle through available layouts." } },
+				{
+					"n",
+					"g<C-x>",
+					actions.cycle_layout,
+					{ desc = "Cycle through available layouts." },
+				},
 				{
 					"n",
 					"[x",
@@ -137,6 +164,36 @@ local function load_config()
 					{ desc = "Choose all the versions of a conflict" },
 				},
 				{ "n", "dx", actions.conflict_choose("none"), { desc = "Delete the conflict region" } },
+				{
+					"n",
+					"<leader>cO",
+					actions.conflict_choose_all("ours"),
+					{ desc = "Choose the OURS version of a conflict for the whole file" },
+				},
+				{
+					"n",
+					"<leader>cT",
+					actions.conflict_choose_all("theirs"),
+					{ desc = "Choose the THEIRS version of a conflict for the whole file" },
+				},
+				{
+					"n",
+					"<leader>cB",
+					actions.conflict_choose_all("base"),
+					{ desc = "Choose the BASE version of a conflict for the whole file" },
+				},
+				{
+					"n",
+					"<leader>cA",
+					actions.conflict_choose_all("all"),
+					{ desc = "Choose all the versions of a conflict for the whole file" },
+				},
+				{
+					"n",
+					"dX",
+					actions.conflict_choose_all("none"),
+					{ desc = "Delete the conflict region for the whole file" },
+				},
 			},
 			diff1 = {
 				-- Mappings in single window diff layouts
@@ -201,53 +258,166 @@ local function load_config()
 					"n",
 					"k",
 					actions.prev_entry,
-					{ desc = "Bring the cursor to the previous file entry." },
+					{ desc = "Bring the cursor to the previous file entry" },
 				},
 				{
 					"n",
 					"<up>",
 					actions.prev_entry,
-					{ desc = "Bring the cursor to the previous file entry." },
+					{ desc = "Bring the cursor to the previous file entry" },
 				},
-				{ "n", "<cr>", actions.select_entry, { desc = "Open the diff for the selected entry." } },
-				{ "n", "o", actions.select_entry, { desc = "Open the diff for the selected entry." } },
-				{ "n", "<2-LeftMouse>", actions.select_entry, { desc = "Open the diff for the selected entry." } },
-				{ "n", "-", actions.toggle_stage_entry, { desc = "Stage / unstage the selected entry." } },
-				{ "n", "S", actions.stage_all, { desc = "Stage all entries." } },
-				{ "n", "U", actions.unstage_all, { desc = "Unstage all entries." } },
+				{
+					"n",
+					"<cr>",
+					actions.select_entry,
+					{ desc = "Open the diff for the selected entry" },
+				},
+				{
+					"n",
+					"o",
+					actions.select_entry,
+					{ desc = "Open the diff for the selected entry" },
+				},
+				{
+					"n",
+					"l",
+					actions.select_entry,
+					{ desc = "Open the diff for the selected entry" },
+				},
+				{
+					"n",
+					"<2-LeftMouse>",
+					actions.select_entry,
+					{ desc = "Open the diff for the selected entry" },
+				},
+				{
+					"n",
+					"-",
+					actions.toggle_stage_entry,
+					{ desc = "Stage / unstage the selected entry" },
+				},
+				{
+					"n",
+					"s",
+					actions.toggle_stage_entry,
+					{ desc = "Stage / unstage the selected entry" },
+				},
+				{ "n", "S", actions.stage_all, { desc = "Stage all entries" } },
+				{ "n", "U", actions.unstage_all, { desc = "Unstage all entries" } },
 				{
 					"n",
 					"X",
 					actions.restore_entry,
-					{ desc = "Restore entry to the state on the left side." },
+					{ desc = "Restore entry to the state on the left side" },
 				},
-				{ "n", "L", actions.open_commit_log, { desc = "Open the commit log panel." } },
+				{
+					"n",
+					"L",
+					actions.open_commit_log,
+					{ desc = "Open the commit log panel" },
+				},
+				{ "n", "zo", actions.open_fold, { desc = "Expand fold" } },
+				{ "n", "h", actions.close_fold, { desc = "Collapse fold" } },
+				{ "n", "zc", actions.close_fold, { desc = "Collapse fold" } },
+				{ "n", "za", actions.toggle_fold, { desc = "Toggle fold" } },
+				{ "n", "zR", actions.open_all_folds, { desc = "Expand all folds" } },
+				{ "n", "zM", actions.close_all_folds, { desc = "Collapse all folds" } },
 				{ "n", "<c-b>", actions.scroll_view(-0.25), { desc = "Scroll the view up" } },
 				{ "n", "<c-f>", actions.scroll_view(0.25), { desc = "Scroll the view down" } },
-				{ "n", "<tab>", actions.select_next_entry, { desc = "Open the diff for the next file" } },
-				{ "n", "<s-tab>", actions.select_prev_entry, { desc = "Open the diff for the previous file" } },
-				{ "n", "gf", actions.goto_file_edit, { desc = "Open the file in the previous tabpage" } },
-				{ "n", "<C-w><C-f>", actions.goto_file_split, { desc = "Open the file in a new split" } },
-				{ "n", "<C-w>gf", actions.goto_file_tab, { desc = "Open the file in a new tabpage" } },
-				{ "n", "i", actions.listing_style, { desc = "Toggle between 'list' and 'tree' views" } },
+				{
+					"n",
+					"<tab>",
+					actions.select_next_entry,
+					{ desc = "Open the diff for the next file" },
+				},
+				{
+					"n",
+					"<s-tab>",
+					actions.select_prev_entry,
+					{ desc = "Open the diff for the previous file" },
+				},
+				{
+					"n",
+					"gf",
+					actions.goto_file_edit,
+					{ desc = "Open the file in the previous tabpage" },
+				},
+				{
+					"n",
+					"<C-w><C-f>",
+					actions.goto_file_split,
+					{ desc = "Open the file in a new split" },
+				},
+				{
+					"n",
+					"<C-w>gf",
+					actions.goto_file_tab,
+					{ desc = "Open the file in a new tabpage" },
+				},
+				{
+					"n",
+					"i",
+					actions.listing_style,
+					{ desc = "Toggle between 'list' and 'tree' views" },
+				},
 				{
 					"n",
 					"f",
 					actions.toggle_flatten_dirs,
-					{ desc = "Flatten empty subdirectories in tree listing style." },
+					{ desc = "Flatten empty subdirectories in tree listing style" },
 				},
 				{
 					"n",
 					"R",
 					actions.refresh_files,
-					{ desc = "Update stats and entries in the file list." },
+					{ desc = "Update stats and entries in the file list" },
 				},
-				{ "n", "<leader>e", actions.focus_files, { desc = "Bring focus to the file panel" } },
+				{
+					"n",
+					"<leader>e",
+					actions.focus_files,
+					{ desc = "Bring focus to the file panel" },
+				},
 				{ "n", "<leader>b", actions.toggle_files, { desc = "Toggle the file panel" } },
 				{ "n", "g<C-x>", actions.cycle_layout, { desc = "Cycle available layouts" } },
-				{ "n", "[x", actions.prev_conflict, { desc = "Go to the previous conflict" } },
+				{
+					"n",
+					"[x",
+					actions.prev_conflict,
+					{ desc = "Go to the previous conflict" },
+				},
 				{ "n", "]x", actions.next_conflict, { desc = "Go to the next conflict" } },
 				{ "n", "g?", actions.help("file_panel"), { desc = "Open the help panel" } },
+				{
+					"n",
+					"<leader>cO",
+					actions.conflict_choose_all("ours"),
+					{ desc = "Choose the OURS version of a conflict for the whole file" },
+				},
+				{
+					"n",
+					"<leader>cT",
+					actions.conflict_choose_all("theirs"),
+					{ desc = "Choose the THEIRS version of a conflict for the whole file" },
+				},
+				{
+					"n",
+					"<leader>cB",
+					actions.conflict_choose_all("base"),
+					{ desc = "Choose the BASE version of a conflict for the whole file" },
+				},
+				{
+					"n",
+					"<leader>cA",
+					actions.conflict_choose_all("all"),
+					{ desc = "Choose all the versions of a conflict for the whole file" },
+				},
+				{
+					"n",
+					"dX",
+					actions.conflict_choose_all("none"),
+					{ desc = "Delete the conflict region for the whole file" },
+				},
 			},
 			file_history_panel = {
 				{ "n", "g!", actions.options, { desc = "Open the option panel" } },
@@ -310,7 +480,12 @@ local function load_config()
 				},
 				{ "n", "<c-b>", actions.scroll_view(-0.25), { desc = "Scroll the view up" } },
 				{ "n", "<c-f>", actions.scroll_view(0.25), { desc = "Scroll the view down" } },
-				{ "n", "<tab>", actions.select_next_entry, { desc = "Open the diff for the next file" } },
+				{
+					"n",
+					"<tab>",
+					actions.select_next_entry,
+					{ desc = "Open the diff for the next file" },
+				},
 				{
 					"n",
 					"<s-tab>",
@@ -323,9 +498,24 @@ local function load_config()
 					actions.goto_file_edit,
 					{ desc = "Open the file in the previous tabpage" },
 				},
-				{ "n", "<C-w><C-f>", actions.goto_file_split, { desc = "Open the file in a new split" } },
-				{ "n", "<C-w>gf", actions.goto_file_tab, { desc = "Open the file in a new tabpage" } },
-				{ "n", "<leader>e", actions.focus_files, { desc = "Bring focus to the file panel" } },
+				{
+					"n",
+					"<C-w><C-f>",
+					actions.goto_file_split,
+					{ desc = "Open the file in a new split" },
+				},
+				{
+					"n",
+					"<C-w>gf",
+					actions.goto_file_tab,
+					{ desc = "Open the file in a new tabpage" },
+				},
+				{
+					"n",
+					"<leader>e",
+					actions.focus_files,
+					{ desc = "Bring focus to the file panel" },
+				},
 				{ "n", "<leader>b", actions.toggle_files, { desc = "Toggle the file panel" } },
 				{ "n", "g<C-x>", actions.cycle_layout, { desc = "Cycle available layouts" } },
 				{ "n", "g?", actions.help("file_history_panel"), { desc = "Open the help panel" } },
