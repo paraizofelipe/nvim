@@ -54,6 +54,7 @@ M.lazy = {
 	"zbirenbaum/copilot.lua",
 	config = load_config,
 	lazy = false,
+	enabled = false,
 }
 
 return M.lazy

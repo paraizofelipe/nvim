@@ -7,10 +7,13 @@ return {
 	},
 	config = function()
 		local mason_null_ls = require("mason-null-ls")
-
 		local null_ls = require("null-ls")
-
 		local null_ls_utils = require("null-ls.utils")
+
+		local h = require("null-ls.helpers")
+		local methods = require("null-ls.methods")
+
+		local FORMATTING = methods.internal.FORMATTING
 
 		mason_null_ls.setup({
 			ensure_installed = {
@@ -27,21 +30,56 @@ return {
 		-- to setup format on save
 		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
+		local blue_formatter = h.make_builtin({
+			name = "blue",
+			meta = {
+				url = "https://github.com/grantjenks/blue",
+				description = "Blue -- Some folks like black but I prefer blue.",
+			},
+			method = FORMATTING,
+			filetypes = { "python" },
+			generator_opts = {
+				command = "blue",
+				args = {
+					-- "--verbose",
+					"--stdin-filename",
+					"$FILENAME",
+					"--quiet",
+					"-",
+				},
+				to_stdin = true,
+			},
+			factory = h.formatter_factory,
+		})
+
+		local jq_formatter = h.make_builtin({
+			name = "jq",
+			meta = {
+				url = "https://github.com/stedolan/jq",
+				description = "Command-line JSON processor",
+			},
+			method = FORMATTING,
+			filetypes = { "json" },
+			generator_opts = { command = "jq", to_stdin = true },
+			factory = h.formatter_factory,
+		})
+
 		-- configure null_ls
 		null_ls.setup({
-			debug = true,
+			-- debug = true,
 			root_dir = null_ls_utils.root_pattern(".null-ls-root", "Makefile", ".git", "pyproject.toml", "go.mod"),
 			sources = {
 				formatting.stylua,
 				formatting.isort,
-				formatting.blue,
-				formatting.jq,
+				jq_formatter,
+				blue_formatter,
+				-- formatting.black,
 				formatting.yamlfmt,
 				formatting.gofmt,
 				formatting.goimports,
-				-- formatting.clang_format.with({
-				-- 	extra_args = { "-style={BasedOnStyle: Google, IndentWidth: 4}" },
-				-- }),
+				formatting.clang_format.with({
+					extra_args = { "-style={BasedOnStyle: Google, IndentWidth: 4}" },
+				}),
 			},
 			on_attach = function(current_client, bufnr)
 				if current_client.supports_method("textDocument/formatting") then

@@ -15,6 +15,7 @@ local function load_config()
 				dap = { justMyCode = false },
 				args = { "--log-level", "DEBUG" },
 				runner = "pytest",
+				-- python = "/home/paraizo/.pyenv/versions/nvim/bin/python",
 			}),
 			neotest_go({
 				experimental = {
@@ -35,6 +36,7 @@ M.lazy = {
 	"nvim-neotest/neotest",
 	config = load_config,
 	dependencies = {
+		"nvim-neotest/nvim-nio",
 		"nvim-lua/plenary.nvim",
 		"nvim-treesitter/nvim-treesitter",
 		"antoinemadec/FixCursorHold.nvim",

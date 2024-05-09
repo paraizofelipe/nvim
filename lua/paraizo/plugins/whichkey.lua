@@ -79,6 +79,10 @@ local function load_config()
 			"<cmd>lua local wid = require('window-picker').pick_window(); if wid then vim.api.nvim_set_current_win(wid) end<CR>",
 			"Pick Window",
 		},
+		["r"] = {
+			"<C-w>",
+			"Control Window",
+		},
 		-- ["q"] = { "<cmd>q!<CR>", "Quit" },
 		-- ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
 		["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
@@ -100,10 +104,6 @@ local function load_config()
 			n = { "<cmd>bnext<cr>", "Next buffer" },
 			p = { "<cmd>bprevious<cr>", "Previous buffer" },
 		},
-		r = {
-			name = "+rest",
-			r = { "<Plug>RestNvim<cr>", "Request REST" },
-		},
 		d = {
 			name = "+debug",
 			-- DAP
@@ -121,14 +121,6 @@ local function load_config()
 				"<cmd>lua require('dap.ext.vscode').load_launchjs(vim.fn.getcwd() .. '/launch.json')<cr>",
 				"Load launch files",
 			},
-		},
-		p = {
-			name = "Packer",
-			c = { "<cmd>PackerCompile<cr>", "Compile" },
-			i = { "<cmd>PackerInstall<cr>", "Install" },
-			s = { "<cmd>PackerSync<cr>", "Sync" },
-			S = { "<cmd>PackerStatus<cr>", "Status" },
-			u = { "<cmd>PackerUpdate<cr>", "Update" },
 		},
 		g = {
 			name = "Git",
@@ -207,7 +199,7 @@ local function load_config()
 			p = { "<cmd>FloatermNew ipython3<cr>", "Python" },
 			n = { "<cmd>FloatermNew node<cr>", "Node" },
 			d = { "<cmd>FloatermNew --wintype=float --width=0.8 --height=0.8 lazydocker<cr>", "Docker" },
-			g = { "<cmd>FloatermNew --wintype=float --width=0.8 --height=0.8 lazygit<cr>", "Git" },
+			g = { "<cmd>LazyGit<cr>", "Git" },
 			r = { "<cmd>FloatermNew --wintype=float --width=0.8 --height=0.8 ranger<cr>", "Ranger" },
 		},
 		t = {
@@ -217,7 +209,7 @@ local function load_config()
 			s = { '<cmd>lua require("neotest").summary.toggle()<cr>', "Show summary tests" },
 			r = { '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<cr>', "Run tests" },
 			n = { '<cmd>lua require("neotest").run.run()<cr>', "Run nearest" },
-			c = { '<cmd>lua require("neotest").run.stop()<cr>', "Stop test" },
+			l = { '<cmd>lua require("neotest").run.run_last()<cr>', "Run last test" },
 			o = { '<cmd>lua require("neotest").output.open({ enter = true })<cr>', "Show output" },
 			v = { "<cmd>HighlightCoverage<cr>", "Coverage" },
 		},
@@ -230,6 +222,12 @@ local function load_config()
 		q = {
 			name = "Sessions",
 			s = { "<cmd>:Telescope session-lens search_session<CR><cr>", "Search of directory" },
+		},
+		c = {
+			name = "Coverage",
+			c = { "<cmd>:Coverage<CR><cr>", "Active coverage" },
+			t = { "<cmd>:CoverageToggle<CR><cr>", "Toggle coverage sign" },
+			s = { "<cmd>:CoverageSummary<CR><cr>", "Show coverage summary" },
 		},
 	}
 

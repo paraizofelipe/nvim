@@ -157,7 +157,7 @@ end
 M.lazy = {
 	"mfussenegger/nvim-dap",
 	dependencies = {
-		"rcarriga/nvim-dap-ui",
+		{ "rcarriga/nvim-dap-ui", dependencies = { "nvim-neotest/nvim-nio" } },
 		"theHamsta/nvim-dap-virtual-text",
 	},
 	config = load_config,
