@@ -31,10 +31,10 @@ local function load_config()
 			additional_vim_regex_highlighting = true,
 		},
 		indent = { enable = true, disable = { "yaml" } },
-		context_commentstring = {
-			enable = true,
-			enable_autocmd = false,
-		},
+		-- context_commentstring = {
+		-- 	enable = true,
+		-- 	enable_autocmd = false,
+		-- },
 	})
 end
 
