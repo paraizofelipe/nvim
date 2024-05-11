@@ -106,6 +106,11 @@ local function load_config()
 		settings = jsonls_opts.settings,
 		setup = jsonls_opts.setup,
 	})
+
+	lspconfig.clangd.setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
 end
 
 M.lazy = {

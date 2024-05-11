@@ -4,7 +4,7 @@ local function load_config()
 	local auto_session = require("auto-session")
 
 	auto_session.setup({
-		auto_restore_enabled = true,
+		-- auto_restore_enabled = true,
 		auto_session_enable_last_session = true,
 		auto_session_suppress_dirs = { "~/", "~/paraizo", "~/Downloads", "~/Documents", "~/Desktop/" },
 	})
