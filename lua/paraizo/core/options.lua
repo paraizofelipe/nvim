@@ -28,7 +28,7 @@ local options = {
 	number = true, -- set numbered lines
 	relativenumber = true, -- set relative numbered lines
 	numberwidth = 4, -- set number column width to 2 {default 4}
-	signcolumn = "yes:1", -- always show the sign column, otherwise it would shift the text each time
+	signcolumn = "yes:2", -- always show the sign column, otherwise it would shift the text each time
 	wrap = false, -- display lines as one long line
 	scrolloff = 8, -- is one of my fav
 	sidescrolloff = 8,
@@ -51,5 +51,31 @@ vim.cmd([[set formatoptions-=cro]]) -- TODO: this doesn't seem to work
 vim.cmd("autocmd FileType python set cc=79")
 vim.cmd("autocmd FileType go set cc=123")
 vim.cmd("autocmd FileType lua set cc=123")
+-- vim.cmd("autocmd FileType dap-repl resize 15")
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "dap-repl",
+	callback = function(args)
+		for _, win in ipairs(vim.api.nvim_list_wins()) do
+			if vim.api.nvim_win_get_buf(win) == args.buf then
+				vim.api.nvim_win_set_height(win, 20)
+				vim.api.nvim_set_current_win(win)
+				vim.cmd("wincmd J")
+				vim.api.nvim_win_set_height(win, 15)
+			end
+		end
+	end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "text", "markdown" },
+	callback = function()
+		-- vim.opt_local.textwidth = 120
+		vim.opt_local.wrap = true
+		vim.opt_local.linebreak = true
+		vim.opt_local.breakindent = true
+		vim.opt_local.showbreak = "↳ "
+	end,
+})
 
 vim.g.python3_host_prog = "~/.pyenv/versions/nvim/bin/python"

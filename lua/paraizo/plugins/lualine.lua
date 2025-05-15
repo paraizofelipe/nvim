@@ -68,7 +68,15 @@ local function load_config()
 			theme = "auto",
 			component_separators = { left = "  ", right = "  " },
 			section_separators = { left = "", right = " " },
-			disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
+			disabled_filetypes = {
+				"alpha",
+				"dashboard",
+				"NvimTree",
+				"Outline",
+				"dap-view",
+				"dap-repl",
+				"dap-view-term",
+			},
 			always_divide_middle = true,
 		},
 		sections = {

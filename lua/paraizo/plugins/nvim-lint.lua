@@ -5,7 +5,7 @@ local function load_config()
 
 	lint.linters_by_ft = {
 		-- python = { "mypy" },
-		markdown = { "vale" },
+		-- markdown = { "vale" },
 	}
 
 	local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

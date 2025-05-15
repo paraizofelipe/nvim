@@ -58,3 +58,19 @@ M.lazy = {
 }
 
 return M.lazy
+
+
+-- M = {}
+--
+-- local function load_config()
+-- end
+--
+-- M.lazy = {
+-- 	"githup/copilot.vim",
+-- 	config = load_config,
+-- 	lazy = false,
+-- 	enabled = true,
+-- }
+--
+-- return M.lazy
+--

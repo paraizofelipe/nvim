@@ -2,6 +2,8 @@ local M = {}
 
 local lua_ls_opts = require("paraizo.plugins.lsp.settings.lua_ls")
 local pyright_opts = require("paraizo.plugins.lsp.settings.pyright")
+local pylsp_opts = require("paraizo.plugins.lsp.settings.pylsp")
+local ruff_opts = require("paraizo.plugins.lsp.settings.ruff")
 local jsonls_opts = require("paraizo.plugins.lsp.settings.jsonls")
 
 local function load_config()
@@ -18,7 +20,7 @@ local function load_config()
 		keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 		keymap.set("n", "K", vim.lsp.buf.hover, opts)
 		keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-		keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+		-- keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
 		keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
 		keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 		keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
@@ -30,7 +32,7 @@ local function load_config()
 		keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
 	end
 
-	vim.lsp.set_log_level("debug")
+	-- vim.lsp.set_log_level("debug")
 
 	local capabilities = cmp_nvim_lsp.default_capabilities()
 
@@ -53,11 +55,22 @@ local function load_config()
 	}
 	vim.diagnostic.config(config)
 
-	local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-	for type, icon in pairs(signs) do
-		local hl = "DiagnosticSign" .. type
-		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-	end
+	vim.diagnostic.config({
+		signs = {
+			text = {
+				[vim.diagnostic.severity.ERROR] = " ",
+				[vim.diagnostic.severity.WARN] = " ",
+				[vim.diagnostic.severity.HINT] = " ",
+				[vim.diagnostic.severity.INFO] = " ",
+			},
+		},
+	})
+
+	-- local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+	-- for type, icon in pairs(signs) do
+	-- 	local hl = "DiagnosticSign" .. type
+	-- 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+	-- end
 
 	lspconfig.gopls.setup({
 		capabilities = capabilities,
@@ -84,10 +97,17 @@ local function load_config()
 		on_attach = on_attach,
 	})
 
-	lspconfig.ruff_lsp.setup({
-		capabilities = capabilities,
-		on_attach = on_attach,
-		config = "~/.config/.ruff.toml",
+	lspconfig.ruff.setup({
+		-- capabilities = capabilities,
+		-- on_attach = on_attach,
+		-- init_options = ruff_opts,
+		init_options = {
+			settings = {
+				configuration = "/home/paraizo/.config/ruff.toml",
+				-- logLevel = "debug",
+				configurationPreference = "filesystemFirst",
+			},
+		},
 	})
 
 	lspconfig.lua_ls.setup({
@@ -95,6 +115,12 @@ local function load_config()
 		on_attach = on_attach,
 		settings = lua_ls_opts,
 	})
+
+	-- lspconfig.pylsp.setup({
+	-- 	capabilities = capabilities,
+	-- 	on_attach = on_attach,
+	-- 	settings = pylsp_opts,
+	-- })
 
 	lspconfig.pyright.setup({
 		capabilities = capabilities,

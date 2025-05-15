@@ -21,6 +21,7 @@ return {
 				"stylua",
 				"blue",
 				"yamlfmt",
+				"ruff",
 			},
 		})
 
@@ -52,6 +53,26 @@ return {
 			factory = h.formatter_factory,
 		})
 
+		local ruff_formatter = h.make_builtin({
+			name = "ruff",
+			meta = {
+				url = "https://github.com/astral-sh/ruff",
+				description = "An extremely fast Python linter and code formatter, written in Rust.",
+			},
+			method = FORMATTING,
+			filetypes = { "python" },
+			generator_opts = {
+				command = "ruff",
+				args = {
+					"format",
+					"--quiet",
+					"-",
+				},
+				to_stdin = true,
+			},
+			factory = h.formatter_factory,
+		})
+
 		local jq_formatter = h.make_builtin({
 			name = "jq",
 			meta = {
@@ -72,7 +93,8 @@ return {
 				formatting.stylua,
 				formatting.isort,
 				jq_formatter,
-				blue_formatter,
+				-- ruff_formatter,
+				-- blue_formatter,
 				-- formatting.black,
 				formatting.yamlfmt,
 				formatting.gofmt,
@@ -82,7 +104,7 @@ return {
 				}),
 			},
 			on_attach = function(current_client, bufnr)
-				if current_client.supports_method("textDocument/formatting") then
+				if current_client.server_capabilities.documentFormattingProvider then
 					vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 					vim.api.nvim_create_autocmd("BufWritePre", {
 						group = augroup,

@@ -23,11 +23,10 @@ local function load_config()
 			"bashls",
 			"dockerls",
 			"docker_compose_language_service",
-			"ruff_lsp",
+			"ruff",
 			"lua_ls",
 			"jsonls",
 			"pyright",
-			"vale_ls",
 		},
 		-- auto-install configured servers (with lspconfig)
 		automatic_installation = true, -- not the same as ensure_installed
@@ -40,7 +39,7 @@ local function load_config()
 			"blue", -- python formatter
 			"mypy", -- python linter
 			"goimports", -- go formatter
-			"vale",
+			-- "vale",
 			"hadolint",
 			"jsonlint",
 		},

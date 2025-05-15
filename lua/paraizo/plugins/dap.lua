@@ -84,7 +84,7 @@ local function load_config()
 				elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
 					return cwd .. "/.venv/bin/python"
 				else
-					return "/usr/bin/python"
+					return "/usr/bin/python3"
 				end
 			end,
 		},
@@ -143,13 +143,20 @@ local function load_config()
 		},
 	})
 
-	dap.listeners.after.event_initialized["dapui_config"] = function()
+	-- require("dap").listeners.after.event_initialized["open_repl"] = function()
+	-- 	require("dap").repl.open()
+	-- end
+
+	dap.listeners.before.attach.dapui_config = function()
 		dapui.open()
 	end
-	dap.listeners.before.event_terminated["dapui_config"] = function()
+	dap.listeners.before.launch.dapui_config = function()
+		dapui.open()
+	end
+	dap.listeners.before.event_terminated.dapui_config = function()
 		dapui.close()
 	end
-	dap.listeners.before.event_exited["dapui_config"] = function()
+	dap.listeners.before.event_exited.dapui_config = function()
 		dapui.close()
 	end
 end

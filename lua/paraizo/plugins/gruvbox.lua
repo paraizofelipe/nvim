@@ -49,6 +49,7 @@ local function load_config()
 			DiffAdd = { bg = darkenColor("#98971a", 87), fg = "", reverse = false },
 			DiffDelete = { bg = darkenColor("#cc241d", 87), fg = "", reverse = false },
 			DiffText = { bg = darkenColor("#d79921", 87), fg = "", reverse = false },
+			-- LineNr = { fg = "#7c6f64", bg = "#3c3836" },
 		},
 		dim_inactive = false,
 		transparent_mode = false,
